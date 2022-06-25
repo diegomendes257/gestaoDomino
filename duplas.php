@@ -10,51 +10,73 @@
 </head>
 <body>
     <div class="container">
-        <div class="container-fluid mt-3 p-2">
+        <div class="container-fluid mt-3 p-2 border">
             <h4 class="h4 text-center">ESCOLHA AS DUPLAS</h4>
         </div>
-        <div class="container-fluid p-2">
-            <div>
-                <h5 class="h5 text-center">
+        <div class="container-fluid p-2 text-center">
+            <div class="p-2">
+                <h5 class="h5">
                     JOGADORES
                 </h5>
             </div>
-            <div>
-                <p class="bg-success">
-                    DIEGO MENDES
-                </p>
-                <p class="bg-primary">
-                    ADRIELLY
-                </p>
-                <p class="bg-success">
-                    JHESSYKA
-                </p>
-                <p class="bg-primary">
-                    SHAIENNY
-                </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <p class="bg-success p-1 font-weight-bold">
+                            DIEGO MENDES
+                        </p>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <p class="bg-success p-1 font-weight-bold">
+                        ADRIELLY
+                        </p>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <p class="bg-success p-1 font-weight-bold">
+                        JHESSYKA
+                        </p>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <p class="bg-success p-1 font-weight-bold">
+                        SHAIENNY
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="p-3">
+            <div class="p-4">
                 <div class="row text-center">
-                    <div class="col">
-                        <div>
+                    <div class="col border p-4">
+                        <div class="font-weight-bold">
                             DUPLA 1
                         </div>
-                        <div>
-                            nome dos participantes
+                        <div class="p-2">
+                            Nome dos participantes
+                        </div> 
+                        <div class="bg-primary p-2 m-1 font-weight-bold">
+                            DIEGO
+                        </div> 
+                        <div class="bg-primary p-2 m-1 font-weight-bold">
+                            ADRIELLY
                         </div> 
                     </div>
-                    <div class="col">
-                        <div>
+                    <div class="col border p-4">
+                        <div class="font-weight-bold">
                             DUPLA 2
                         </div>
-                        <div>
-                            nome dos participantes
-                        </div>
+                        <div class="p-2">
+                            Nome dos participantes
+                        </div> 
+                        <div class="bg-success p-2 m-1 font-weight-bold">
+                            SHAIENNY
+                        </div> 
+                        <div class="bg-success p-2 m-1 font-weight-bold">
+                            JHESSYKA
+                        </div> 
                     </div>
                 </div>
             </div>
             <div class="text-center">
-                <button onclick="window.location.href='#';" class="btn btn-sm w-25 btn-success p-3 m-3">
+                <button onclick="window.location.href='jogo.php';" class="btn btn-sm w-25 btn-success p-3 m-3">
                     INICIAR
                 </button>
                 <button onclick="window.location.href='index.php';" class="btn btn-sm w-25 btn-danger p-3 m-3">
