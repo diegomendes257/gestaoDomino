@@ -1,3 +1,10 @@
+<?php
+    require "conexaoDomino.php";
+    require "Jogador.php";
+    $j = new Jogador();
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,27 +13,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <title>DOMINÓ</title>
+    <title>FORMAÇÃO DE DUPLAS</title>
 </head>
 <body>
     <div class="container">
-        <div class="container-fluid mt-3 p-2">
-            <h4 class="display-4 text-center">DOMINÓ DO<br /> PIT BULL</h4>
+        <div class="container-fluid mt-3 p-2 border">
+            <h4 class="h4 text-center">DADOS DOS JOGADORES</h4>
         </div>
-        <div class="container-fluid mt-3 p-2">
-            <h4 class="h4 text-center">ESCOLHA UMA OPÇÃO</h4>
-        </div>
-        <div class="container-fluid p-2">
+        <div class="container-fluid p-2 mt-3 text-center">
+            <div class="p-2">
+                <h5 class="h5">
+                    JOGADORES
+                </h5>
+            </div>
+            <div class="container border">
+                <div class="row">
+                            <?php $j->exibeJogadores(); ?>
+                </div>
+            </div>
+            <div class="mb-5 mt-5">
+                <button onclick="window.location.href='index.php';" class="btn btn-sm w-100 btn-success p-3">
+                    VOLTAR
+                </button>
+            </div>
             <div>
-                <button onclick="window.location.href='tipoPartida.php';" class="btn btn-sm w-100 btn-success p-3 m-1">
-                    INICIAR JOGO
-                </button>
-                <button onclick="window.location.href='consultaJogador.php';" class="btn btn-sm w-100 btn-info p-3 m-1">
-                    CONSULTAR DADOS
-                </button>
-                <button onclick="window.location.href='cadastroJogador.php';" class="btn btn-sm w-100 btn-primary p-3 m-1">
-                    CADASTRAR JOGADORES
-                </button>
                 <p class="text-monospace text-center mt-3">
                     Criado e desenvolvido por: <br />Diego Mendes
                 </p> 
