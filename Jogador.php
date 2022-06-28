@@ -31,8 +31,8 @@
             $consultaJogador = $conexaoDomino->prepare($consultaJogador);
             $consultaJogador->execute();
 
-
             while($exibeNome = $consultaJogador->fetch(PDO::FETCH_ASSOC)){
+                
                 echo '<div id="jogador" class="jog col text-center p-2 m-1 bg-warning font-weight-bold" value="'.$exibeNome['id_jogador'].'">'.$exibeNome['nome'].'</a></div>';
             }
         }
@@ -52,24 +52,16 @@
         }
 
 
-        public function cadastroDuplas($id1, $id2, $id3, $id4){
+        public function cadastroDuplas($id1, $id2){
             
             global $conexaoDomino;
 
-            $insereDupla1 = "INSERT INTO duplas(jogador1, jogador2)value(:jogador1, :jogador2";
-            $insereDupla1 = $conexaoDomino->prepare($insereDupla1);
-            $insereDupla1->bindValue(":jogador1", $id1);
-            $insereDupla1->bindValue(":jogador2", $id2);
-            $insereDupla1->execute();
-
-            $insereDupla2 = "INSERT INTO duplas(jogador1, jogador2)value(:jogador3, :jogador4";
-            $insereDupla2 = $conexaoDomino->prepare($insereDupla2);
-            $insereDupla2->bindValue(":jogador3", $id3);
-            $insereDupla2->bindValue(":jogador4", $id4);
-            $insereDupla2->execute();
-                
-            echo "<div class='alert alert-primary' role='alert'>Dupla cadastrada com sucesso!</div>";
-        
+                $insereDupla1 = "INSERT INTO duplas(jogador1, jogador2) VALUE(:jogador1, :jogador2)";
+                $insereDupla1 = $conexaoDomino->prepare($insereDupla1);
+                $insereDupla1->bindValue(":jogador1", $id1);
+                $insereDupla1->bindValue(":jogador2", $id2);
+                $insereDupla1->execute();
+                echo "<div class='alert alert-primary' role='alert'>Dupla 1 cadastrada com sucesso!</div>";        
         }
 
     }

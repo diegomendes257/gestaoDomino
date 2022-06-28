@@ -13,6 +13,8 @@ $(document).ready(function(){
 	});
 
     let click = 1;
+    $('.botaoEnviaDupla1').hide();
+    $('.botaoEnviaDupla2').hide();
     //var nomej = $(this).attr('value');      // pega o valor dentro da div
     $('.jog').click(function(event){
 
@@ -27,6 +29,21 @@ $(document).ready(function(){
             }else if(click == 2){
                 var jogador2 = idj;
                 console.log(jogador2)
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'cadastraDupla.php',
+                    data: {
+                        jogador1: jogador1,
+                        jogador2: jogador2    
+                        },
+                    success: function(){
+                        alert('dupla 1 cadastrada')
+                    }
+                });
+                
+                //$('.botaoEnviaDupla1').show();
+
             }
         }
         if(click > 2 && click <= 4){
@@ -40,6 +57,20 @@ $(document).ready(function(){
             }else if(click == 4){
                 var jogador4 = idj;
                 console.log(jogador4)
+                
+                //$('.botaoEnviaDupla2').show();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'cadastraDupla.php',
+                        data: {
+                            jogador1: jogador1,
+                            jogador2: jogador2    
+                            },
+                        success: function(){
+                            alert('dupla 2 cadastrada')
+                        }
+                    });
             }
         }
         if(click > 4){
@@ -47,23 +78,59 @@ $(document).ready(function(){
             var div1 = $(this);
             $('.nomeJogadores').append(div1);
         }
-        click++;        
+        click++;
     });
 
-    $('#botaoIniciarJogo').click(function(){
 
-        function teste(){
+    $('#botaoIniciarJogo').click(function(){
+    });
+        
+        /*var idj = $(this).attr('value');
+
+
+        var j1 = 2;
+        var j2 = 6;
+        var j3 = 8;
+        var j4 = 10;
+        $.ajax({
+            type: 'POST',
+            url: 'cadastraDupla.php',
+            data: {
+                jogador1: j1,
+                jogador2: j2,
+                jogador3: j3,
+                jogador4: j4    
+                },
+            success: function(){
+                alert('duplas cadastradas')
+                alert('<a href="jogo.php"></a>')
+            }
+        });
+    });
+    $('#botaoIniciarJogo').click(function(){
+        
+        $.ajax({
+            type: 'POST',
+            url: 'cadastraDupla.php',
+            data:   {
+                jogador3: jogador3,
+                jogador4: jogador4    
+                },
+            success: function(){
+                console.log('cadastrou dupla 2')
+            }
+        });
+            var tem = 'Diego';
             $.ajax({
                 type: 'POST',
                 url: 'cadastraDupla.php',
-                data: {tem: true},
-                success: function(data){
+                data: {tem: tem},
+                success: function(){
                     console.log('pegando')
                 }
             });
-        }
-        window.location.href = 'cadastraDupla.php';
-        /*$.ajax({
+
+        $.ajax({
             url: 'cadastraDupla.php',
             type: 'POST',
             data: {
@@ -78,7 +145,7 @@ $(document).ready(function(){
                 //$('.valorExibe').html(data)
             }
         });*/
-    }); 
+    //}); 
 
 
 
