@@ -27,13 +27,14 @@
             
             global $conexaoDomino;
 
+            $cont = 1;
             $consultaJogador = "SELECT id_jogador, nome FROM jogador";
             $consultaJogador = $conexaoDomino->prepare($consultaJogador);
             $consultaJogador->execute();
 
             while($exibeNome = $consultaJogador->fetch(PDO::FETCH_ASSOC)){
+                echo '<div class="jog col text-center p-2 m-1 bg-warning font-weight-bold" value="'.$exibeNome['id_jogador'].'">'.$exibeNome['nome'].'</a></div>';
                 
-                echo '<div id="jogador" class="jog col text-center p-2 m-1 bg-warning font-weight-bold" value="'.$exibeNome['id_jogador'].'">'.$exibeNome['nome'].'</a></div>';
             }
         }
 
@@ -62,6 +63,22 @@
                 $insereDupla1->bindValue(":jogador2", $id2);
                 $insereDupla1->execute();
                 echo "<div class='alert alert-primary' role='alert'>Dupla 1 cadastrada com sucesso!</div>";        
+        }
+
+
+        public function exibePlacar($dupla1, $dupla2){
+            
+            global $conexaoDomino;
+
+            $exibePlacar = "SELECT vitoriasPartida FROM duplas WHERE id_dupla = :dupla1 and id_dupla = :dupla2";
+            $exibePlacar = $conexaoDomino->prepare($exibePlacar);
+            $exibePlacar->bindValue(":dupla1", $dupla1);
+            $exibePlacar->bindValue(":dupla2", $dupla2);
+            $exibePlacar->execute();
+
+            $exibe = $exibePlacar->fetch(PDO::FETCH_ASSOC);
+
+            echo $exibe["vitoriasPartida"];
         }
 
     }

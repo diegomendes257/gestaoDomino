@@ -37,7 +37,7 @@
             </div>
             <div class="p-4">
                 <div class="row text-center">
-                    <div class="col border p-4">
+                    <div class="col border p-2">
                         <div class="font-weight-bold">
                             DUPLA 1
                         </div>
@@ -45,7 +45,18 @@
                             Nome dos participantes
                         </div> 
                         <div id="dupla1" class="bg-primary p-2 m-1 font-weight-bold">
-                            
+                            <div class="jogador1">
+
+                            </div>
+                            <div class="nomeJ1">
+
+                            </div>
+                            <div class="jogador2">
+
+                            </div>
+                            <div class="nomeJ2">
+
+                            </div>
                         </div>
                         <div class="botaoEnviaDupla1 row">
                             <div class="col">
@@ -53,7 +64,7 @@
                             </div>
                         </div> 
                     </div>
-                    <div class="col border p-4">
+                    <div class="col border p-2">
                         <div class="font-weight-bold">
                             DUPLA 2
                         </div>
@@ -61,7 +72,18 @@
                             Nome dos participantes
                         </div> 
                         <div id="dupla2" class="bg-success p-2 m-1 font-weight-bold">
+                            <div class="jogador3">
 
+                            </div>
+                            <div class="nomeJ3">
+
+                            </div>
+                            <div class="jogador4">
+
+                            </div>
+                            <div class="nomeJ4">
+
+                            </div>
                         </div>
                         <div class="botaoEnviaDupla2 row">
                             <div class="col">
