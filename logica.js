@@ -9,7 +9,7 @@ $(document).ready(function(){
     // BATIDA
     $('#confirmaBatida').click(function(){
         var selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
-		alert(selecao);9
+		alert(selecao);
 	});
 
     let click = 1;
@@ -25,7 +25,7 @@ $(document).ready(function(){
         }if(click == 2){
             event.preventDefault();
             var div1 = $(this);
-            var idj = $(this).attr('value');
+            //var idj = $(this).attr('value');
             $('.jogador2').append(click);
             $('.nomeJ2').append(div1);
 
@@ -44,6 +44,7 @@ $(document).ready(function(){
                 },
                 success: function(){
                     alert('Dupla 1 cadastrada')
+                    alert(click);
                 }
             });
         }
@@ -54,19 +55,21 @@ $(document).ready(function(){
             //var idj = $(this).attr('value');
             $('.jogador3').append(click);
             $('.nomeJ3').append(div1);
+            alert(click);
         }if(click == 4){
             event.preventDefault();
             var div1 = $(this);
             //var idj = $(this).attr('value');
             $('.jogador4').append(click);
             $('.nomeJ4').append(div1);
+            alert(click);
 
             var jogador3 = $('.nomeJ3 .jog').attr('value');
             var jogador4 = $('.nomeJ4 .jog').attr('value');
         
             $.ajax({
                 type: 'POST',
-                url: 'cadastraDupla.php, ',
+                url: 'cadastraDupla.php',
                 data: {
                     jogador1: jogador3,
                     jogador2: jogador4    
@@ -85,7 +88,8 @@ $(document).ready(function(){
     $('#botaoIniciarJogo').click(function(){
         
         if(click > 4){
-            alert("PREPARE-SE! <br /> O jogo vai começar!") 
+            alert("PREPARE-SE! O jogo vai começar!");
+            window.location.href="jogo.php"; 
         }else{
             alert('Você ainda não cadastrou as duplas');
         }
