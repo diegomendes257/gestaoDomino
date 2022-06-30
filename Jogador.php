@@ -57,12 +57,12 @@
             
             global $conexaoDomino;
 
-                $insereDupla1 = "INSERT INTO duplas(jogador1, jogador2) VALUE(:jogador1, :jogador2)";
-                $insereDupla1 = $conexaoDomino->prepare($insereDupla1);
-                $insereDupla1->bindValue(":jogador1", $id1);
-                $insereDupla1->bindValue(":jogador2", $id2);
-                $insereDupla1->execute();
-                echo "<div class='alert alert-primary' role='alert'>Dupla 1 cadastrada com sucesso!</div>";        
+            $insereDupla1 = "INSERT INTO duplas(jogador1, jogador2) VALUE(:jogador1, :jogador2)";
+            $insereDupla1 = $conexaoDomino->prepare($insereDupla1);
+            $insereDupla1->bindValue(":jogador1", $id1);
+            $insereDupla1->bindValue(":jogador2", $id2);
+            $insereDupla1->execute();
+            echo "<div class='alert alert-primary' role='alert'>Dupla 1 cadastrada com sucesso!</div>";        
         }
 
 
@@ -81,5 +81,19 @@
             echo $exibe["vitoriasPartida"];
         }
 
+        public function retornaJogador(){
+            
+            global $conexaoDomino;
+
+            $selecionaJogador = "SELECT * FROM duplas order by id_dupla desc LIMIT 3";
+            $selecionaJogador = $conexaoDomino->prepare($selecionaJogador);
+            $selecionaJogador->execute();
+
+            $retornaJogador = $selecionaJogador->fetch(PDO::FETCH_ASSOC);
+
+            echo "<div class='alert alert-primary' role='alert'>".$retornaJogador['jogador1']."</div>";
+            echo $retornaJogador['jogador1'];
+            echo $retornaJogador['jogador2'];
+        }
     }
 ?>

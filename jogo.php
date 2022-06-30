@@ -1,3 +1,14 @@
+<?php 
+        require 'conexaoDomino.php';
+        require 'Jogador.php';
+        $j = new Jogador();
+    
+        global $conexaoDomino;
+
+        $j->exibeJogadores();
+        $j->retornaJogador();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

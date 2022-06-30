@@ -9,7 +9,7 @@ $(document).ready(function(){
     // BATIDA
     $('#confirmaBatida').click(function(){
         var selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
-		alert(selecao);
+		alert(selecao);9
 	});
 
     let click = 1;
@@ -39,6 +39,9 @@ $(document).ready(function(){
                     jogador1: jogador1,
                     jogador2: jogador2    
                     },
+                beforeSend : function () {
+                    console.log('Carregando...');
+                },
                 success: function(){
                     alert('Dupla 1 cadastrada')
                 }
@@ -63,11 +66,14 @@ $(document).ready(function(){
         
             $.ajax({
                 type: 'POST',
-                url: 'cadastraDupla.php',
+                url: 'cadastraDupla.php, ',
                 data: {
                     jogador1: jogador3,
                     jogador2: jogador4    
                     },
+                beforeSend : function () {
+                    console.log('Carregando...');
+                  },
                 success: function(){
                     alert('Dupla 2 cadastrada')
                 }
@@ -77,8 +83,9 @@ $(document).ready(function(){
     });
 
     $('#botaoIniciarJogo').click(function(){
+        
         if(click > 4){
-            window.location.href = 'jogo.php';
+            alert("PREPARE-SE! <br /> O jogo vai começar!") 
         }else{
             alert('Você ainda não cadastrou as duplas');
         }
