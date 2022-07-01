@@ -56,11 +56,13 @@
         public function cadastroDuplas($id1, $id2){
             
             global $conexaoDomino;
+            $vitoriasPartida = 0;
 
-            $insereDupla1 = "INSERT INTO duplas(jogador1, jogador2) VALUE(:jogador1, :jogador2)";
+            $insereDupla1 = "INSERT INTO duplas(jogador1, jogador2, vitoriasPartida) VALUE(:jogador1, :jogador2, :vitoriasPartida)";
             $insereDupla1 = $conexaoDomino->prepare($insereDupla1);
             $insereDupla1->bindValue(":jogador1", $id1);
             $insereDupla1->bindValue(":jogador2", $id2);
+            $insereDupla1->bindValue(":vitoriasPartida", $vitoriasPartida);
             $insereDupla1->execute();
             echo "<div class='alert alert-primary' role='alert'>Dupla 1 cadastrada com sucesso!</div>";        
         }
@@ -82,9 +84,9 @@
         public function exibePlacar($dupla){
             
             global $conexaoDomino;
-            $exibePlacar = "SELECT id_dupla, vitoriasPartida FROM duplas WHERE id_dupla = :dupla1 ORDER BY id_dupla DESC LIMIT 2;";
+            $exibePlacar = "SELECT vitoriasPartida FROM duplas WHERE id_dupla = :dupla ORDER BY id_dupla DESC LIMIT 2";
             $exibePlacar = $conexaoDomino->prepare($exibePlacar);
-            $exibePlacar->bindValue(":dupla1", $dupla);
+            $exibePlacar->bindValue(":dupla", $dupla);
             //$exibePlacar->bindValue(":dupla2", $dupla2);
             $exibePlacar->execute();
 
@@ -93,6 +95,23 @@
             }
             
         }
+
+
+        public function toque($id){
+            
+            global $conexaoDomino;
+            $contaToque = "SELECT id_jogador, nome FROM jogador WHERE id_jogador = :id";
+            $contaToque = $conexaoDomino->prepare($contaToque);
+            $contaToque->bindValue(":id", $id);
+            //$exibePlacar->bindValue(":dupla2", $dupla2);
+            $contaToque->execute();
+            $selecionaIdToque = $contaToque->fetch(PDO::FETCH_ASSOC);
+            //while($selecionaIdToque = $contaToque->fetch(PDO::FETCH_ASSOC)){
+                echo '<div>'.$selecionaIdToque["id_jogador"].'</div>';
+            //}
+        }
+
+
 
         public function retornaJogador(){
             
@@ -120,23 +139,22 @@
             for ($i=0; $i < $mostraJogador1 = $selecionaJogador1->fetch(PDO::FETCH_ASSOC); $i++) {
                 if($i == 0){
                     $jogador1 = $mostraJogador1['nome'];
-                    $classBg = 'bg-primary';
+                    $classBg = 'bg-success';
                 }
                 if($i == 1){
                     $jogador2 = $mostraJogador1['nome'];
-                    $classBg = 'bg-success';
+                    $classBg = 'bg-primary';
                 }    
-                echo'   
+                echo'
                     <div class="row">
-                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold">
+                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold" value="'.$mostraJogador1['id_jogador'].'">
                             '.$mostraJogador1['nome'].'
                         </div>
                         <div class="col-2 p-1 m-1 border text-uppercase text-center">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-sm btn-danger p-1 m-1" data-toggle="modal" data-target="#toque">
+                            <button type="button" class="btnToque btn btn-sm w-100 btn-danger p-1 m-1" value="'.$mostraJogador1['id_jogador'].'" data-toggle="modal" data-target="#toque">
                                 TOQUE
                             </button>
-
                             <!-- Modal -->
                             <div class="modal fade" id="toque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -179,7 +197,7 @@
                         </div>
                         <div class="col-2 p-1 m-1 border text-uppercase text-center">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-sm btn-success p-1 m-1" data-toggle="modal" data-target="#batida">
+                            <button type="button" class="btn btn-sm w-100 btn-success p-1 m-1" data-toggle="modal" data-target="#batida">
                                 BATIDA
                             </button>
 
@@ -240,20 +258,20 @@
             for ($i=0; $i < $mostraJogador2 = $selecionaJogador2->fetch(PDO::FETCH_ASSOC); $i++) {
                 if($i == 0){
                     $jogador3 = $mostraJogador2['nome'];
-                    $classBg = 'bg-primary';
+                    $classBg = 'bg-success';
                 }
                 if($i == 1){
                     $jogador4 = $mostraJogador2['nome'];
-                    $classBg = 'bg-success';
+                    $classBg = 'bg-primary';
                 }     
                 echo'   
                     <div class="row">
-                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold">
+                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold" value="'.$mostraJogador2['id_jogador'].'">
                             '.$mostraJogador2['nome'].'
                         </div>
                         <div class="col-2 p-1 m-1 border text-uppercase text-center">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-sm btn-danger p-1 m-1" data-toggle="modal" data-target="#toque">
+                            <button type="button" class="btn btn-sm w-100 btn-danger p-1 m-1" data-toggle="modal" data-target="#toque">
                                 TOQUE
                             </button>
 
@@ -299,7 +317,7 @@
                         </div>
                         <div class="col-2 p-1 m-1 border text-uppercase text-center">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-sm btn-success p-1 m-1" data-toggle="modal" data-target="#batida">
+                            <button type="button" class="btn btn-sm w-100 btn-success p-1 m-1" data-toggle="modal" data-target="#batida">
                                 BATIDA
                             </button>
 

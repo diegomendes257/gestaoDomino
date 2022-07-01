@@ -1,26 +1,14 @@
 $(document).ready(function(){
 
     // TOQUE
-    $('#confirmaToque').click(function(){
-        var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
-        var nomeToque = $('.col').text();
-        /*$.ajax({
-            type: 'POST',
-            url: 'cadastraDupla.php',
-            data: {
-                jogador1: jogador1,
-                jogador2: jogador2    
-                },
-            beforeSend : function () {
-                console.log('carregando...');
-            },
-            success: function(){
-                alert('Dupla 1 cadastrada')
-            }
-        });*/
-
-		alert(nomeToque + selecao);
-	});
+    $('.btnToque').click(function(event){
+        event.preventDefault();
+        var nomeToque = $(this).attr('value');
+        $('#confirmaToque').click(function(){
+            var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
+            alert(nomeToque + selecao);
+        });
+    });
 
     // BATIDA
     $('#confirmaBatida').click(function(){

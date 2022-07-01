@@ -62,7 +62,7 @@
                     <div class="col text-center bg-primary p-md-2">
                         <h3 class="display-2">
                         <?php
-                            $j->exibePlacar($dupla1);
+                            $j->exibePlacar($dupla2);
                         ?>
                         </h3> 
                     </div>
@@ -74,7 +74,7 @@
                     <div class="col text-center bg-success p-md-2">
                         <h3 class="display-2">
                             <?php
-                                $j->exibePlacar($dupla2);
+                                $j->exibePlacar($dupla1);
                             ?>
                         </h3>
                     </div>
