@@ -81,6 +81,7 @@
             
         }
 
+
         public function exibePlacar($dupla){
             
             global $conexaoDomino;
@@ -111,8 +112,7 @@
             //}
         }
 
-
-
+        
         public function retornaJogador(){
             
             global $conexaoDomino;
@@ -147,12 +147,12 @@
                 }    
                 echo'
                     <div class="row">
-                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold" value="'.$mostraJogador1['id_jogador'].'">
+                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold">
                             '.$mostraJogador1['nome'].'
                         </div>
                         <div class="col-2 p-1 m-1 border text-uppercase text-center">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btnToque btn btn-sm w-100 btn-danger p-1 m-1" value="'.$mostraJogador1['id_jogador'].'" data-toggle="modal" data-target="#toque">
+                            <button type="button" class="btnToque btn btn-sm w-100 btn-danger p-1 m-1" data-toggle="modal" data-target="#toque">
                                 TOQUE
                             </button>
                             <!-- Modal -->
@@ -266,7 +266,7 @@
                 }     
                 echo'   
                     <div class="row">
-                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold" value="'.$mostraJogador2['id_jogador'].'">
+                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold">
                             '.$mostraJogador2['nome'].'
                         </div>
                         <div class="col-2 p-1 m-1 border text-uppercase text-center">
