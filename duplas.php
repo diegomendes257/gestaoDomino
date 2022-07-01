@@ -59,7 +59,7 @@
                         </div>
                         <div class="botaoEnviaDupla1 row">
                             <div class="col">
-                                <button class="btn btn-primary">Cadastrar dupla 1</button>
+                                <!-- <button class="btn btn-primary">Cadastrar dupla 1</button> -->
                             </div>
                         </div> 
                     </div>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="botaoEnviaDupla2 row">
                             <div class="col">
-                                <button class="btn btn-primary">Cadastrar dupla 2</button>
+                                <!-- <button class="btn btn-primary">Cadastrar dupla 2</button> -->
                             </div>
                         </div> 
                     </div>

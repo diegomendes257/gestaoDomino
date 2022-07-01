@@ -3,7 +3,23 @@ $(document).ready(function(){
     // TOQUE
     $('#confirmaToque').click(function(){
         var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
-		alert(selecao);
+        var nomeToque = $('.col').text();
+        /*$.ajax({
+            type: 'POST',
+            url: 'cadastraDupla.php',
+            data: {
+                jogador1: jogador1,
+                jogador2: jogador2    
+                },
+            beforeSend : function () {
+                console.log('carregando...');
+            },
+            success: function(){
+                alert('Dupla 1 cadastrada')
+            }
+        });*/
+
+		alert(nomeToque + selecao);
 	});
 
     // BATIDA
@@ -40,11 +56,10 @@ $(document).ready(function(){
                     jogador2: jogador2    
                     },
                 beforeSend : function () {
-                    console.log('Carregando...');
+                    console.log('carregando...');
                 },
                 success: function(){
                     alert('Dupla 1 cadastrada')
-                    alert(click);
                 }
             });
         }
@@ -55,14 +70,12 @@ $(document).ready(function(){
             //var idj = $(this).attr('value');
             $('.jogador3').append(click);
             $('.nomeJ3').append(div1);
-            alert(click);
         }if(click == 4){
             event.preventDefault();
             var div1 = $(this);
             //var idj = $(this).attr('value');
             $('.jogador4').append(click);
             $('.nomeJ4').append(div1);
-            alert(click);
 
             var jogador3 = $('.nomeJ3 .jog').attr('value');
             var jogador4 = $('.nomeJ4 .jog').attr('value');
@@ -75,7 +88,7 @@ $(document).ready(function(){
                     jogador2: jogador4    
                     },
                 beforeSend : function () {
-                    console.log('Carregando...');
+                    console.log('carregando...');
                   },
                 success: function(){
                     alert('Dupla 2 cadastrada')

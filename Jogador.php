@@ -66,34 +66,334 @@
         }
 
 
-        public function exibePlacar($dupla1, $dupla2){
+        public function colocaPonto($batida){
+
+            global $conexaoDomino;
+            $pontoBatida = 1;
+            $batida1 = "UPDATE duplas set vitoriasPartida = :ponto WHERE id_dupla = :batida";
+            $batida1 = $conexaoDomino->prepare($batida1);
+            $batida1->bindValue(":batida", $batida);
+            $batida1->bindValue(":ponto", $pontoBatida);
+            //$exibePlacar->bindValue(":dupla2", $dupla2);
+            $batida1->execute();
+            
+        }
+
+        public function exibePlacar($dupla){
             
             global $conexaoDomino;
-
-            $exibePlacar = "SELECT vitoriasPartida FROM duplas WHERE id_dupla = :dupla1 and id_dupla = :dupla2";
+            $exibePlacar = "SELECT id_dupla, vitoriasPartida FROM duplas WHERE id_dupla = :dupla1 ORDER BY id_dupla DESC LIMIT 2;";
             $exibePlacar = $conexaoDomino->prepare($exibePlacar);
-            $exibePlacar->bindValue(":dupla1", $dupla1);
-            $exibePlacar->bindValue(":dupla2", $dupla2);
+            $exibePlacar->bindValue(":dupla1", $dupla);
+            //$exibePlacar->bindValue(":dupla2", $dupla2);
             $exibePlacar->execute();
 
-            $exibe = $exibePlacar->fetch(PDO::FETCH_ASSOC);
-
-            echo $exibe["vitoriasPartida"];
+            while($exibe = $exibePlacar->fetch(PDO::FETCH_ASSOC)){
+                echo '<div>'.$exibe["vitoriasPartida"].'</div>';
+            }
+            
         }
 
         public function retornaJogador(){
             
             global $conexaoDomino;
 
-            $selecionaJogador = "SELECT * FROM duplas order by id_dupla desc LIMIT 3";
-            $selecionaJogador = $conexaoDomino->prepare($selecionaJogador);
-            $selecionaJogador->execute();
+            $selecionaJogador1 = "SELECT jogador.nome, jogador.id_jogador, duplas.jogador1, 
+                                    duplas.id_dupla
+                                    FROM jogador, duplas 
+                                    WHERE duplas.jogador1 = jogador.id_jogador
+                                    ORDER BY duplas.id_dupla DESC LIMIT 2;
+                                    ";
+            $selecionaJogador2 = "SELECT jogador.nome, jogador.id_jogador, duplas.jogador2, 
+                                    duplas.id_dupla
+                                    FROM jogador, duplas 
+                                    WHERE duplas.jogador2 = jogador.id_jogador
+                                    ORDER BY duplas.id_dupla DESC LIMIT 2;
+                                    ";
+                                    
+            $selecionaJogador1 = $conexaoDomino->prepare($selecionaJogador1);
+            $selecionaJogador1->execute();
 
-            $retornaJogador = $selecionaJogador->fetch(PDO::FETCH_ASSOC);
+            $selecionaJogador2 = $conexaoDomino->prepare($selecionaJogador2);
+            $selecionaJogador2->execute();
+            
+            for ($i=0; $i < $mostraJogador1 = $selecionaJogador1->fetch(PDO::FETCH_ASSOC); $i++) {
+                if($i == 0){
+                    $jogador1 = $mostraJogador1['nome'];
+                    $classBg = 'bg-primary';
+                }
+                if($i == 1){
+                    $jogador2 = $mostraJogador1['nome'];
+                    $classBg = 'bg-success';
+                }    
+                echo'   
+                    <div class="row">
+                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold">
+                            '.$mostraJogador1['nome'].'
+                        </div>
+                        <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-danger p-1 m-1" data-toggle="modal" data-target="#toque">
+                                TOQUE
+                            </button>
 
-            echo "<div class='alert alert-primary' role='alert'>".$retornaJogador['jogador1']."</div>";
-            echo $retornaJogador['jogador1'];
-            echo $retornaJogador['jogador2'];
+                            <!-- Modal -->
+                            <div class="modal fade" id="toque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Quem a(o) tocou?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-left">
+                                        <div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Jhessyka">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    Jhessyka
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Diego">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    Diego
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Adrielly">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    Adrielly
+                                                </label>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                        <button type="button" id="confirmaToque" class="btn btn-primary">Confirmar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-success p-1 m-1" data-toggle="modal" data-target="#batida">
+                                BATIDA
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="batida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-left">
+                                        <div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    NORMAL
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    CARROÇA
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    LÁ E LÔ
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    CRUZADA
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    CONTAGEM DE PONTOS
+                                                </label>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                        <button type="button" id="confirmaBatida" class="btn btn-primary">Confirmar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';           
+            }
+            for ($i=0; $i < $mostraJogador2 = $selecionaJogador2->fetch(PDO::FETCH_ASSOC); $i++) {
+                if($i == 0){
+                    $jogador3 = $mostraJogador2['nome'];
+                    $classBg = 'bg-primary';
+                }
+                if($i == 1){
+                    $jogador4 = $mostraJogador2['nome'];
+                    $classBg = 'bg-success';
+                }     
+                echo'   
+                    <div class="row">
+                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold">
+                            '.$mostraJogador2['nome'].'
+                        </div>
+                        <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-danger p-1 m-1" data-toggle="modal" data-target="#toque">
+                                TOQUE
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="toque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Quem a(o) tocou?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-left">
+                                        <div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Jhessyka">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    Jhessyka
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Diego">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    Diego
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Adrielly">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    Adrielly
+                                                </label>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                        <button type="button" id="confirmaToque" class="btn btn-primary">Confirmar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-success p-1 m-1" data-toggle="modal" data-target="#batida">
+                                BATIDA
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="batida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-left">
+                                        <div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    NORMAL
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    CARROÇA
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    LÁ E LÔ
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    CRUZADA
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    CONTAGEM DE PONTOS
+                                                </label>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                        <button type="button" id="confirmaBatida" class="btn btn-primary">Confirmar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+            }
+
+            //echo $jogador1;
+            //echo $jogador2;
+            //echo $jogador3;
+            //echo $jogador4;
+        
+
+
+            /*$selecionaJogadorNome2 = "SELECT jogador.nome, jogador.id_jogador, 
+                                    duplas.jogador2, duplas.id_dupla
+                                    FROM jogador, duplas 
+                                    WHERE duplas.jogador2 = jogador.id_jogador
+                                    ORDER BY duplas.id_dupla DESC LIMIT 2;
+                                    ";
+                                    
+            $selecionaJogadorNome2 = $conexaoDomino->prepare($selecionaJogadorNome2);
+            $selecionaJogadorNome2->execute();
+
+            $selecionaJogadorNome2 = "SELECT jogador.nome, jogador.id_jogador, duplas.jogador1, 
+            duplas.jogador2, duplas.id_dupla
+            FROM jogador, duplas 
+            WHERE duplas.jogador2 = jogador.id_jogador
+            ORDER BY duplas.id_dupla DESC LIMIT 2;
+            ";
+            
+            $selecionaJogadorNome2 = $conexaoDomino->prepare($selecionaJogadorNome2);
+            $selecionaJogadorNome2->execute();
+
+            while($selecionaJogadorNomeImprime2 = $selecionaJogadorNome2->fetch(PDO::FETCH_ASSOC)){
+            echo '<hr />';
+            echo '<hr />';
+            echo $selecionaJogadorNomeImprime2['nome'];
+            echo '<hr />';
+            }
+            //echo "<div class='alert alert-primary' role='alert'>".$selecionaJogadorNomeImprime['jogador1']."</div>";
+            //echo $selecionaJogadorNomeImprime['jogador1'];
+            //echo $selecionaJogadorNomeImprime['jogador2'];*/
         }
     }
 ?>
