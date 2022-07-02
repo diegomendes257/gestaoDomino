@@ -5,18 +5,27 @@
     
         global $conexaoDomino;
 
-        $queryDupla = 'SELECT id_dupla FROM duplas ORDER BY duplas.id_dupla DESC LIMIT 2';
+        $queryDupla = 'SELECT id_dupla, jogador1, jogador2 FROM duplas ORDER BY duplas.id_dupla DESC LIMIT 2';
         $queryDupla = $conexaoDomino->prepare($queryDupla);
         $queryDupla->execute();
         for ($i=0; $i < $duplas = $queryDupla->fetch(PDO::FETCH_ASSOC); $i++) {
-            //echo $duplas['id_dupla'];
             if($i == 0){
                 $dupla1 = $duplas['id_dupla'];
+                var_dump($dupla1);
+                $jogador1 = $duplas['jogador1'];
+                $jogador2 = $duplas['jogador2'];
             }
             if($i == 1){
                 $dupla2 = $duplas['id_dupla'];
+                var_dump($dupla2);
+                $jogador3 = $duplas['jogador1'];
+                $jogador4 = $duplas['jogador2'];
             }
         }
+
+        /*$id_jogador = 'SELECT id_jogador FROM jogador limit 1';
+        $id_jogador = $conexaoDomino->prepare($id_jogador);
+        $id_jogador->execute();*/
 ?>
 
 <!DOCTYPE html>
@@ -91,9 +100,46 @@
                 </div>                
                 <div class="row">
                     <div class="col">
-                        <?php
-                            $j->retornaJogador();
-                        ?>
+                        <div class="row">
+                            <div id='1' class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
+                                <?php
+                                    $j->exibeJogadoresId($jogador1);
+                                ?>
+                            </div>
+                            <?php
+                                $jog1 = $j->exibeBotoes();
+                            ?>
+                        </div>
+                        <div class="row">
+                            <div id='2' class="col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
+                                <?php
+                                    $j->exibeJogadoresId($jogador2);
+                                ?>
+                            </div>
+                            <?php
+                                $jog1 = $j->exibeBotoes();
+                            ?>
+                        </div>
+                        <div class="row">
+                            <div id='3' class="col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
+                                <?php
+                                    $j->exibeJogadoresId($jogador3);
+                                ?>
+                            </div>
+                            <?php
+                                $jog1 = $j->exibeBotoes();
+                            ?>
+                        </div>
+                        <div class="row">
+                            <div id='4' class="col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
+                                <?php
+                                    $j->exibeJogadoresId($jogador4);
+                                ?>
+                            </div>
+                            <?php
+                                $jog1 = $j->exibeBotoes();
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>

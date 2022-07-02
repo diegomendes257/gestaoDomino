@@ -3,7 +3,8 @@ $(document).ready(function(){
     // TOQUE
     $('.btnToque').click(function(event){
         event.preventDefault();
-        var nomeToque = $(this).attr('value');
+        const nomeToque = $('.nome').attr('value');
+        alert(nomeToque);
         $('#confirmaToque').click(function(){
             var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
             console.log(nomeToque + selecao);
