@@ -144,15 +144,18 @@
                 if($i == 1){
                     $jogador2 = $mostraJogador1['nome'];
                     $classBg = 'bg-primary';
-                }    
+                }
+                
+                var_dump($i);
+                //var_dump($mostraJogador1['nome']);  
                 echo'
                     <div class="row">
-                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold">
+                        <div class="col d-flex justify-content-center align-items-center m-1 '.$classBg.' text-uppercase font-weight-bold value="'.$mostraJogador1['id_jogador'].'">
                             '.$mostraJogador1['nome'].'
                         </div>
                         <div class="col-2 p-1 m-1 border text-uppercase text-center">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btnToque btn btn-sm w-100 btn-danger p-1 m-1" data-toggle="modal" data-target="#toque">
+                            <button type="button" class="btnToque btn btn-sm w-100 btn-danger p-1 m-1" value="'.$mostraJogador1['id_jogador'].'" data-toggle="modal" data-target="#toque">
                                 TOQUE
                             </button>
                             <!-- Modal -->
@@ -253,7 +256,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>';           
+                    </div>';
+                    if($i == 0){
+                        echo "igual 0";
+                    }if($i == 1){
+                        echo 'igual 1';
+                    }
             }
             for ($i=0; $i < $mostraJogador2 = $selecionaJogador2->fetch(PDO::FETCH_ASSOC); $i++) {
                 if($i == 0){
