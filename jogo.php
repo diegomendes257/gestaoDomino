@@ -101,44 +101,72 @@
                 <div class="row">
                     <div class="col">
                         <div class="row">
+                            <div class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
+                                <?php
+                                    echo $jogador1;
+                                ?>
+                            </div>
                             <div id='1' class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador1);
                                 ?>
                             </div>
-                            <?php
-                                $jog1 = $j->exibeBotoes();
-                            ?>
+                            <div class="btn1 col d-flex">
+                                <?php
+                                    $jog1 = $j->exibeBotoes();
+                                ?>
+                            </div>
                         </div>
                         <div class="row">
+                            <div class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
+                                <?php
+                                    echo $jogador2;
+                                ?>
+                            </div>
                             <div id='2' class="col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador2);
                                 ?>
                             </div>
-                            <?php
-                                $jog1 = $j->exibeBotoes();
-                            ?>
+                            <div class="btn2 col d-flex">
+                                <?php
+                                    $jog1 = $j->exibeBotoes();
+                                ?>
+                            </div>
                         </div>
                         <div class="row">
-                            <div id='3' class="col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
+                            <div class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
+                                <?php
+                                    echo $jogador3;
+                                ?>
+                            </div>
+                            <div id='3' class="col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador3);
                                 ?>
                             </div>
-                            <?php
-                                $jog1 = $j->exibeBotoes();
-                            ?>
+                            <div class="btn3 col d-flex">
+                                <?php
+                                    $jog1 = $j->exibeBotoes();
+                                ?>
+                            </div>
                         </div>
                         <div class="row">
-                            <div id='4' class="col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
+                            <div class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
+                                <?php
+                                    echo $jogador4;
+                                ?>
+                            </div>
+                            <div id='4' class="col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador4);
                                 ?>
                             </div>
-                            <?php
-                                $jog1 = $j->exibeBotoes();
-                            ?>
+                            <div class="btn4 col d-flex">
+                                <?php
+                                    $jog1 = $j->exibeBotoes();
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>

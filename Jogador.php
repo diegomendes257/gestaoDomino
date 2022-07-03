@@ -145,7 +145,7 @@
         public function exibeBotoes(){
             echo '<div class="col-2 p-1 m-1 border text-uppercase text-center">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btnToque btn btn-sm w-100 btn-danger p-1 m-1" data-toggle="modal" data-target="#toque">
+                    <button type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque">
                         TOQUE
                     </button>
                     <!-- Modal -->
