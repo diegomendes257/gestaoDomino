@@ -34,8 +34,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./css/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="toque.js"></script>
     <title>FORMAÇÃO DE DUPLAS</title>
 </head>
@@ -101,71 +101,511 @@
                 <div class="row">
                     <div class="col">
                         <div class="row">
-                            <div class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
+                            <div id='1' class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
                                 <?php
                                     echo $jogador1;
                                 ?>
                             </div>
-                            <div id='1' class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
+                            <div class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador1);
                                 ?>
                             </div>
                             <div class="btn1 col d-flex">
-                                <?php
-                                    $jog1 = $j->exibeBotoes();
-                                ?>
+                                
+                                    <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <!-- Button trigger modal -->
+                                    <button id="jogador1" type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque1">
+                                        TOQUE
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="toque1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Quem a(o) tocou?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador2 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador2);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador3 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador3);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador4 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador4);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                                    <button type="button" id="confirmaToque1" class="btn btn-primary">Confirmar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-sm w-100 btn-success" data-toggle="modal" data-target="#batida1">
+                                        BATIDA
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="batida1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                NORMAL
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CARROÇA
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                LÁ E LÔ
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CRUZADA
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CONTAGEM DE PONTOS
+                                                            </label>
+                                                        </div><br />
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                            <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                                    <button type="button" id="confirmaBatida1" class="btn btn-primary">Confirmar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
+                            <div id='2' class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
                                 <?php
                                     echo $jogador2;
                                 ?>
                             </div>
-                            <div id='2' class="col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
+                            <div class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador2);
                                 ?>
                             </div>
-                            <div class="btn2 col d-flex">
-                                <?php
-                                    $jog1 = $j->exibeBotoes();
-                                ?>
+                            <div class="btn1 col d-flex">
+                                
+                                    <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <!-- Button trigger modal -->
+                                    <button id="jogador2" type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque2">
+                                        TOQUE
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="toque2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Quem a(o) tocou?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador3 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador3);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador4 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador4);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador1 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador1);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                                    <button type="button" id="confirmaToque2" class="btn btn-primary">Confirmar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-sm w-100 btn-success" data-toggle="modal" data-target="#batida2">
+                                        BATIDA
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="batida2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                NORMAL
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CARROÇA
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                LÁ E LÔ
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CRUZADA
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CONTAGEM DE PONTOS
+                                                            </label>
+                                                        </div><br />
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                            <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                                    <button type="button" id="confirmaBatida2" class="btn btn-primary">Confirmar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
+                            <div id='3' class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
                                 <?php
                                     echo $jogador3;
                                 ?>
                             </div>
-                            <div id='3' class="col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
+                            <div class="nome col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador3);
                                 ?>
                             </div>
-                            <div class="btn3 col d-flex">
-                                <?php
-                                    $jog1 = $j->exibeBotoes();
-                                ?>
+                            <div class="btn1 col d-flex">
+                                
+                                    <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <!-- Button trigger modal -->
+                                    <button id="jogador3" type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque3">
+                                        TOQUE
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="toque3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Quem a(o) tocou?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador4 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador4);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador1 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador1);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador2 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador2);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                                    <button type="button" id="confirmaToque3" class="btn btn-primary">Confirmar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-sm w-100 btn-success" data-toggle="modal" data-target="#batida3">
+                                        BATIDA
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="batida3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                NORMAL
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CARROÇA
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                LÁ E LÔ
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CRUZADA
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CONTAGEM DE PONTOS
+                                                            </label>
+                                                        </div><br />
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                            <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                                    <button type="button" id="confirmaBatida3" class="btn btn-primary">Confirmar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
+                            <div id='4' class="id_usuario col-1 d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
                                 <?php
                                     echo $jogador4;
                                 ?>
                             </div>
-                            <div id='4' class="col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
+                            <div class="nome col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador4);
                                 ?>
                             </div>
-                            <div class="btn4 col d-flex">
-                                <?php
-                                    $jog1 = $j->exibeBotoes();
-                                ?>
+                            <div class="btn1 col d-flex">
+                                
+                                    <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <!-- Button trigger modal -->
+                                    <button id="jogador4" type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque4">
+                                        TOQUE
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="toque4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Quem a(o) tocou?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador1 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador1);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador2 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador2);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<?php echo $jogador3 ?>">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                <?php
+                                                                    $j->exibeJogadoresId($jogador3);
+                                                                ?>
+                                                            </label>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                                    <button type="button" id="confirmaToque4" class="btn btn-primary">Confirmar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-sm w-100 btn-success" data-toggle="modal" data-target="#batida4">
+                                        BATIDA
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="batida4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                NORMAL
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CARROÇA
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                LÁ E LÔ
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CRUZADA
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                            <label class="form-check-label" for="exampleRadios1">
+                                                                CONTAGEM DE PONTOS
+                                                            </label>
+                                                        </div><br />
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1" value="empate">
+                                                            <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                                    <button type="button" id="confirmaBatida4" class="btn btn-primary">Confirmar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -193,8 +633,11 @@
     </div>
 
     <!-- links externos --->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="./css/bootstrap.min.js"></script>
+    <!-- <script src="./css/jqueryAjax.min.js"></script> -->
+    <!-- <script src="./css/popper.min.js"></script> -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> -->
+    <!--//<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
 
 </body>
 </html>

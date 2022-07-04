@@ -1,25 +1,73 @@
 $(document).ready(function(){
 
     // TOQUE
-    $('.btnToque').click(function(event){
+    $('#jogador1').click(function(event){
         event.preventDefault();
-        const idToque = $('.id_usuario').text();
-        var jogador1 = $('.id_usuario').attr('value');
-        alert(jogador1);
-        $('#confirmaToque').click(function(){
+        //const idToque = $('.id_usuario').text();
+        const id1 = $('#1').attr('id');
+        alert(id1);
+        $('#confirmaToque1').click(function(){
             var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
-            console.log(nomeToque + selecao);
+            alert(id1 + selecao);
         });
     });
 
+    $('#jogador2').click(function(event){
+        event.preventDefault();
+        //const idToque = $('.id_usuario').text();
+        const id2 = $('#2').attr('id');
+        alert(id2);
+        $('#confirmaToque2').click(function(){
+            var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
+            alert(id2 + selecao);
+        });
+    });
 
+    $('#jogador3').click(function(event){
+        event.preventDefault();
+        //const idToque = $('.id_usuario').text();
+        const id3 = $('#3').attr('id');
+        alert(id3);
+        $('#confirmaToque3').click(function(){
+            var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
+            alert(id3 + selecao);
+        });
+    });
 
-
+    $('#jogador4').click(function(event){
+        event.preventDefault();
+        //const idToque = $('.id_usuario').text();
+        const id4 = $('#4').attr('id');
+        alert(id4);
+        $('#confirmaToque4').click(function(){
+            var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
+            alert(id4 + selecao);
+        });
+    });
 
     
+
+
     // BATIDA
-    $('#confirmaBatida').click(function(){
-        var selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
+    $('#confirmaBatida1').click(function(){
+        let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
+        let check = document.querySelector('.exampleCheck1:checked');
+        alert(selecao);
+        alert(check);
+    });
+
+    $('#confirmaBatida2').click(function(){
+        let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
+        alert(selecao);
+    });
+
+    $('#confirmaBatida3').click(function(){
+        let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
+        alert(selecao);
+    });
+
+    $('#confirmaBatida4').click(function(){
+        let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
         alert(selecao);
     });
 
