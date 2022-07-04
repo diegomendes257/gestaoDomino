@@ -211,10 +211,6 @@
                                                                 CONTAGEM DE PONTOS
                                                             </label>
                                                         </div><br />
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                            <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
-                                                        </div>
                                                     </div>   
                                                 </div>
                                                 <div class="modal-footer">
@@ -338,10 +334,6 @@
                                                                 CONTAGEM DE PONTOS
                                                             </label>
                                                         </div><br />
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                                            <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
-                                                        </div>
                                                     </div>   
                                                 </div>
                                                 <div class="modal-footer">
@@ -465,10 +457,6 @@
                                                                 CONTAGEM DE PONTOS
                                                             </label>
                                                         </div><br />
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="exampleCheck3">
-                                                            <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
-                                                        </div>
                                                     </div>   
                                                 </div>
                                                 <div class="modal-footer">
@@ -592,10 +580,6 @@
                                                                 CONTAGEM DE PONTOS
                                                             </label>
                                                         </div><br />
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="exampleCheck4" value="empate">
-                                                            <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
-                                                        </div>
                                                     </div>   
                                                 </div>
                                                 <div class="modal-footer">
