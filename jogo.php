@@ -113,7 +113,7 @@
                             </div>
                             <div class="btn1 col d-flex">
                                 
-                                    <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <div class="col p-1 m-1 border text-uppercase text-center">
                                     <!-- Button trigger modal -->
                                     <button id="jogador1" type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque1">
                                         TOQUE
@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                <div class="col p-1 m-1 border text-uppercase text-center">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-sm w-100 btn-success" data-toggle="modal" data-target="#batida1">
                                         BATIDA
@@ -240,7 +240,7 @@
                             </div>
                             <div class="btn1 col d-flex">
                                 
-                                    <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <div class="col p-1 m-1 border text-uppercase text-center">
                                     <!-- Button trigger modal -->
                                     <button id="jogador2" type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque2">
                                         TOQUE
@@ -291,7 +291,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                <div class="col p-1 m-1 border text-uppercase text-center">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-sm w-100 btn-success" data-toggle="modal" data-target="#batida2">
                                         BATIDA
@@ -339,7 +339,7 @@
                                                             </label>
                                                         </div><br />
                                                         <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck2">
                                                             <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
                                                         </div>
                                                     </div>   
@@ -367,7 +367,7 @@
                             </div>
                             <div class="btn1 col d-flex">
                                 
-                                    <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <div class="col p-1 m-1 border text-uppercase text-center">
                                     <!-- Button trigger modal -->
                                     <button id="jogador3" type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque3">
                                         TOQUE
@@ -418,7 +418,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                <div class="col p-1 m-1 border text-uppercase text-center">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-sm w-100 btn-success" data-toggle="modal" data-target="#batida3">
                                         BATIDA
@@ -466,7 +466,7 @@
                                                             </label>
                                                         </div><br />
                                                         <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck3">
                                                             <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
                                                         </div>
                                                     </div>   
@@ -494,7 +494,7 @@
                             </div>
                             <div class="btn1 col d-flex">
                                 
-                                    <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                    <div class="col p-1 m-1 border text-uppercase text-center">
                                     <!-- Button trigger modal -->
                                     <button id="jogador4" type="button" class="btnToque btn btn-sm w-100 btn-danger" data-toggle="modal" data-target="#toque4">
                                         TOQUE
@@ -545,7 +545,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 p-1 m-1 border text-uppercase text-center">
+                                <div class="col p-1 m-1 border text-uppercase text-center">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-sm w-100 btn-success" data-toggle="modal" data-target="#batida4">
                                         BATIDA
@@ -563,25 +563,25 @@
                                                 <div class="modal-body text-left">
                                                     <div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 NORMAL
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="2">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CARROÇA
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="3">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 LÁ E LÔ
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="4">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CRUZADA
                                                             </label>
@@ -593,7 +593,7 @@
                                                             </label>
                                                         </div><br />
                                                         <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1" value="empate">
+                                                            <input type="checkbox" class="form-check-input" id="exampleCheck4" value="empate">
                                                             <label class="form-check-label font-weight-bold"  for="exampleCheck1">Teve empate? Se for, marque aqui!</label>
                                                         </div>
                                                     </div>   

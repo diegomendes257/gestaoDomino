@@ -51,24 +51,50 @@ $(document).ready(function(){
     // BATIDA
     $('#confirmaBatida1').click(function(){
         let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
-        let check = document.querySelector('.exampleCheck1:checked');
+
+        let checkbox = document.getElementById('exampleCheck1');
+        if(checkbox.checked) {
+            alert("O cliente marcou o checkbox");
+        } else {
+            console.log("O cliente não marcou o checkbox");
+        }
         alert(selecao);
-        alert(check);
     });
 
     $('#confirmaBatida2').click(function(){
         let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
         alert(selecao);
+
+        let checkbox = document.getElementById('exampleCheck2');
+        if(checkbox.checked) {
+            alert("O cliente marcou o checkbox");
+        } else {
+            console.log("O cliente não marcou o checkbox");
+        }
     });
 
     $('#confirmaBatida3').click(function(){
         let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
         alert(selecao);
+
+        let checkbox = document.getElementById('exampleCheck3');
+        if(checkbox.checked) {
+            alert("O cliente marcou o checkbox");
+        } else {
+            console.log("O cliente não marcou o checkbox");
+        }
     });
 
     $('#confirmaBatida4').click(function(){
         let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
         alert(selecao);
+
+        let checkbox = document.getElementById('exampleCheck4');
+        if(checkbox.checked) {
+            alert("O cliente marcou o checkbox");
+        } else {
+            console.log("O cliente não marcou o checkbox");
+        }
     });
 
 });
