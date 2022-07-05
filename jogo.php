@@ -182,31 +182,31 @@
                                                 <div class="modal-body text-left">
                                                     <div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 NORMAL
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="2">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CARROÇA
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="3">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 LÁ E LÔ
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="4">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CRUZADA
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CONTAGEM DE PONTOS
                                                             </label>
@@ -305,31 +305,31 @@
                                                 <div class="modal-body text-left">
                                                     <div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 NORMAL
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="2">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CARROÇA
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="3">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 LÁ E LÔ
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="4">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CRUZADA
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CONTAGEM DE PONTOS
                                                             </label>
@@ -428,31 +428,31 @@
                                                 <div class="modal-body text-left">
                                                     <div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Normal">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 NORMAL
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Carroça">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="2">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CARROÇA
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Lá e Lô">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="3">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 LÁ E LÔ
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Cruzada">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="4">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CRUZADA
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CONTAGEM DE PONTOS
                                                             </label>
