@@ -66,6 +66,20 @@ $(document).ready(function(){
                     alert('Dupla 2 cadastrada')
                 }
             });
+
+            $.ajax({
+                type: 'POST',
+                url: 'cadastraPartida.php',
+                data: {
+                    duplas: true    
+                    },
+                beforeSend : function () {
+                    console.log('duplas sendo cadastradas...');
+                  },
+                success: function(data){
+                    alert('Duplas iniciadas');
+                }
+            });
         }
         click++;
     });

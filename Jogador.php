@@ -67,17 +67,16 @@
         }
 
 
-        public function colocaPonto($batida){
+        public function batida($bateu, $tipo, $partida, $dupla){
 
             global $conexaoDomino;
-            $pontoBatida = 1;
-            $batida1 = "UPDATE duplas set vitoriasPartida = :ponto WHERE id_dupla = :batida";
-            $batida1 = $conexaoDomino->prepare($batida1);
-            $batida1->bindValue(":batida", $batida);
-            $batida1->bindValue(":ponto", $pontoBatida);
-            //$exibePlacar->bindValue(":dupla2", $dupla2);
-            $batida1->execute();
-            
+            $batida = "INSERT INTO batida(bateu, tipo, id_partidas_FK, id_dupla_FK) VALUE(:b, :t, :p, :d)";
+            $batida = $conexaoDomino->prepare($batida);
+            $batida->bindValue(":b", $bateu);
+            $batida->bindValue(":t", $tipo);
+            $batida->bindValue(":p", $partida);
+            $batida->bindValue(":d", $dupla);
+            $batida->execute();
         }
 
 

@@ -1,21 +1,26 @@
 <?php
 
-    if(isset($_POST['id_jogador_toque'])){
+    if(isset($_POST['deu_toque'])){
 
         global $conexaoDomino;
         require 'conexaoDomino.php';
 
-        $idJogadorToque = $_POST['id_jogador_toque'];
-        $toque = $_POST['selecao'];
-        //$tocou = $_POST['levou_toque'];
-        $idPartida = 2;
+        $selecionaUltimaPartida = "SELECT id_partidas FROM partidas ORDER BY id_partidas DESC LIMIT 1";
+        $selecionaUltimaPartida = $conexaoDomino->prepare($selecionaUltimaPartida);
+        $selecionaUltimaPartida->execute();
 
-        $selecionaJogadores = "INSERT INTO toques(deu_toque, levou_toque, id_jogador_toque, id_partida_toque) VALUE(:toque, :tocou, :id, :p)";
-        $selecionaJogadores = $conexaoDomino->prepare($selecionaJogadores);
-        $selecionaJogadores->bindValue(":toque", $toque);
-        $selecionaJogadores->bindValue(":tocou", $idJogadorToque);
-        $selecionaJogadores->bindValue(":id", $toque);
-        $selecionaJogadores->bindValue(":p", $idPartida);
-        $selecionaJogadores->execute();
+        $retornaUltimaPartida = $selecionaUltimaPartida->fetch();
+        $idPartida = $retornaUltimaPartida["id_partidas"];
+
+        $deu_toque = $_POST['deu_toque'];
+        $levou_toque = $_POST['levou_toque'];
+        //$tocou = $_POST['levou_toque'];
+
+        $insereToque = "INSERT INTO toques(deu_toque, levou_toque, id_partida_FK) VALUE(:toque, :tocou, :id)";
+        $insereToque = $conexaoDomino->prepare($insereToque);
+        $insereToque->bindValue(":toque", $deu_toque);
+        $insereToque->bindValue(":tocou", $levou_toque);
+        $insereToque->bindValue(":id", $idPartida);
+        $insereToque->execute();
     }
 ?>
