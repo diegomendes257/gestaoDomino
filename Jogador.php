@@ -79,6 +79,23 @@
             $batida->execute();
         }
 
+        public function pontuaBatida($pontuaBatida){
+
+            global $conexaoDomino;
+
+            $consultaJogadorId = "SELECT batidas FROM jogador WHERE id_jogador = :id";
+            $consultaJogadorId = $conexaoDomino->prepare($consultaJogadorId);
+            $consultaJogadorId->bindValue(":id", $pontuaBatida);
+            $consultaJogadorId->execute();
+
+            $maisUm = 1;
+            $soma = $consultaJogadorId['saldo'] + $maisUm;
+            $batida = "UPDATE jogador set batidas = ".$soma." WHERE id_jogador = :id";
+            $batida = $conexaoDomino->prepare($batida);
+            $batida->bindValue(":id", $pontuaBatida);
+            $batida->execute();
+        }
+
 
         public function exibePlacar($dupla){
             

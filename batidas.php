@@ -7,7 +7,8 @@
         global $conexaoDomino;
         $j = new Jogador();
 
-        $bateu = $_POST['bateu'];
+        $bateu = intval($_POST['bateu']);
+        var_dump($bateu);
         $tipo = $_POST['tipo'];
 
         $selecionaUltimaPartida = "SELECT id_partidas FROM partidas ORDER BY id_partidas DESC LIMIT 1";
@@ -29,6 +30,8 @@
 
                 //if($bateu == $jogador1 || $bateu == $jogador2){
                     $j->batida($bateu, $tipo, $partida, $dupla1);
+
+                    $j->pontuaBatida($bateu);
                 //}
                 
             }
@@ -40,6 +43,8 @@
 
                 //if($bateu == $jogador3 || $bateu == $jogador4){
                     $j->batida($bateu, $tipo, $partida, $dupla2);
+
+                    $j->pontuaBatida($bateu);
                 //}
             }
         }

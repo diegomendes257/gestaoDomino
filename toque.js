@@ -119,7 +119,7 @@ $(document).ready(function(){
     // BATIDA
     $('#confirmaBatida1').click(function(){
         let selecaoBatida = document.querySelector('input[name=exampleRadios1]:checked').value;
-        const idBatida = $('#1').text();
+        let idBatida = $('#1').text();
         const id1 = $('#1').attr('id');
 
         $.ajax({
@@ -135,7 +135,7 @@ $(document).ready(function(){
             success: function(){
                 //alert(id_jogador_toque + selecao)
                 alert('Sucesso!');
-                window.location.reload();
+                alert(idBatida + selecaoBatida);
             }
         });
         /*let checkbox = document.getElementById('exampleCheck1');
@@ -144,31 +144,85 @@ $(document).ready(function(){
         } else {
             console.log("O cliente não marcou o checkbox");
         }*/
+        window.location.reload();
         alert(idBatida + selecao);
     });
 
-    $('#confirmaBatida2').click(function(event){
+    $('#confirmaBatida2').click(function(){
         let selecaoBatida = document.querySelector('input[name=exampleRadios1]:checked').value;
-        event.preventDefault();
-        const idBatida = $('#2').text();
+        let idBatida = $('#2').text();
         const id1 = $('#2').attr('id');
-        alert(idBatida + selecaoBatida);
+
+        $.ajax({
+            type: 'POST',
+            url: 'batidas.php',
+            data: {
+                bateu : idBatida,
+                tipo : selecaoBatida    
+                },
+            beforeSend : function () {
+                console.log('carregando...');
+            },
+            success: function(){
+                //alert(id_jogador_toque + selecao)
+                alert('Sucesso!');
+                alert(idBatida + selecaoBatida);
+            }
+        });
+        window.location.reload();
+        
     });
 
-    $('#confirmaBatida3').click(function(event){
-        let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
-        event.preventDefault();
-        const idBatida = $('#3').text();
+    $('#confirmaBatida3').click(function(){
+        let selecaoBatida = document.querySelector('input[name=exampleRadios1]:checked').value;
+        let idBatida = $('#3').text();
         const id1 = $('#3').attr('id');
+
+        $.ajax({
+            type: 'POST',
+            url: 'batidas.php',
+            data: {
+                bateu : idBatida,
+                tipo : selecaoBatida    
+                },
+            beforeSend : function () {
+                console.log('carregando...');
+            },
+            success: function(){
+                //alert(id_jogador_toque + selecao)
+                alert('Sucesso!');
+                alert(idBatida + selecaoBatida);
+            }
+        });
+
+        window.location.reload();
         alert(idBatida + selecao);
     });
 
-    $('#confirmaBatida4').click(function(event){
-        let selecao = document.querySelector('input[name=exampleRadios1]:checked').value;
-        event.preventDefault();
-        const idBatida = $('#4').text();
+    $('#confirmaBatida4').click(function(){
+        let selecaoBatida = document.querySelector('input[name=exampleRadios1]:checked').value;
+        let idBatida = $('#4').text();
         const id1 = $('#4').attr('id');
-        alert(idBatida + selecao);
+
+        $.ajax({
+            type: 'POST',
+            url: 'batidas.php',
+            data: {
+                bateu : idBatida,
+                tipo : selecaoBatida    
+                },
+            beforeSend : function () {
+                console.log('carregando...');
+            },
+            success: function(){
+                //alert(id_jogador_toque + selecao)
+                alert('Sucesso!');
+                alert(idBatida + selecaoBatida);
+                
+            }
+        });
+        
+        window.location.reload();
     });
 
 });
