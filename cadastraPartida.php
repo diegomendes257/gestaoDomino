@@ -18,7 +18,7 @@
             }
         }
 
-        $insereDupla1 = "INSERT INTO partidas(id_duplas_1, id_dupla_2) VALUE(:dupla1, :dupla2)";
+        $insereDupla1 = "INSERT INTO partidas(id_duplas_1, id_duplas_2) VALUE(:dupla1, :dupla2)";
         $insereDupla1 = $conexaoDomino->prepare($insereDupla1);
         $insereDupla1->bindValue(":dupla1", $dupla1);
         $insereDupla1->bindValue(":dupla2", $dupla2);

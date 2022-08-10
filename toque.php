@@ -22,5 +22,6 @@
         $insereToque->bindValue(":tocou", $levou_toque);
         $insereToque->bindValue(":id", $idPartida);
         $insereToque->execute();
+
     }
 ?>

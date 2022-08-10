@@ -77,6 +77,12 @@
             $batida->bindValue(":p", $partida);
             $batida->bindValue(":d", $dupla);
             $batida->execute();
+
+            /*if($batida == true){
+                $sql = "SELECT id_jogador FROM jogador WHERE id_jogador = :id LIMIT 1";
+                $sql = $conexaoDomino->prepare($sql);
+                $sql->bindValue(":id", $bateu)
+            }*/
         }
 
         public function pontuaBatida($pontuaBatida){
@@ -89,7 +95,7 @@
             $consultaJogadorId->execute();
 
             $maisUm = 1;
-            $soma = $consultaJogadorId['saldo'] + $maisUm;
+            $soma = $consultaJogadorId['batidas'] + $maisUm;
             $batida = "UPDATE jogador set batidas = ".$soma." WHERE id_jogador = :id";
             $batida = $conexaoDomino->prepare($batida);
             $batida->bindValue(":id", $pontuaBatida);
