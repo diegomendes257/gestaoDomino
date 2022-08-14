@@ -106,7 +106,7 @@
                                     echo $jogador1;
                                 ?>
                             </div>
-                            <div class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
+                            <div id="j1" class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador1 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador1);
                                 ?>
@@ -229,7 +229,7 @@
                                     echo $jogador2;
                                 ?>
                             </div>
-                            <div class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
+                            <div id="j2" class="nome col d-flex justify-content-center align-items-center m-1 bg-success text-uppercase font-weight-bold" value="<?php echo $jogador2 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador2);
                                 ?>
@@ -352,7 +352,7 @@
                                     echo $jogador3;
                                 ?>
                             </div>
-                            <div class="nome col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
+                            <div id="j3" class="nome col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador3 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador3);
                                 ?>
@@ -475,7 +475,7 @@
                                     echo $jogador4;
                                 ?>
                             </div>
-                            <div class="nome col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
+                            <div id="j4" class="nome col d-flex justify-content-center align-items-center m-1 bg-primary text-uppercase font-weight-bold" value="<?php echo $jogador4 ?>">
                                 <?php
                                     $j->exibeJogadoresId($jogador4);
                                 ?>

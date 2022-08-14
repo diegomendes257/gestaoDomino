@@ -31,6 +31,9 @@
                             <?php $j->exibeJogadores(); ?>
                 </div>
             </div>
+            <div class="mb-2 mt-2">
+                <?php $j->exibePartidas(); ?>
+            </div>
             <div class="mb-5 mt-5">
                 <button onclick="window.location.href='index.php';" class="btn btn-sm w-100 btn-success p-3">
                     VOLTAR

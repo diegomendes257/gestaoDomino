@@ -1,5 +1,29 @@
 $(document).ready(function(){
 
+    function fimPartida(){
+
+        let nome1 = $('#j1').text();
+        let nome2 = $('#j2').text();
+        let nome3 = $('#j3').text();
+        let nome4 = $('#j4').text();
+
+        let dupla_1 = $('#dupla_1').text(); // ponto dupla_1
+        let dupla_2 = $('#dupla_2').text(); // ponto dupla_2
+
+        if(dupla_1 > 5){
+            alert('Parabéns ' + nome3 + nome4 + ', vocês ganharam de ' + dupla_1 + ' a ' + dupla_2);
+            window.location.href = 'index.php';
+        }
+        
+        if(dupla_2 > 5){
+            alert('Parabéns ' + nome1 + nome2 + ', vocês ganharam de ' + dupla_2 + ' a ' + dupla_1);
+            window.location.href = 'index.php';
+        }        
+    }
+
+    fimPartida();
+
+
     // TOQUE
     $('#jogador1').click(function(){
         
@@ -145,7 +169,6 @@ $(document).ready(function(){
             console.log("O cliente não marcou o checkbox");
         }*/
         window.location.reload();
-        alert(idBatida + selecao);
     });
 
     $('#confirmaBatida2').click(function(){
@@ -196,7 +219,6 @@ $(document).ready(function(){
         });
 
         window.location.reload();
-        alert(idBatida + selecao);
     });
 
     $('#confirmaBatida4').click(function(){
@@ -221,7 +243,6 @@ $(document).ready(function(){
                 
             }
         });
-        
         window.location.reload();
     });
 

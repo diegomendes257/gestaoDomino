@@ -22,7 +22,7 @@
         $queryDupla = $conexaoDomino->prepare($queryDupla);
         $queryDupla->execute();
         for ($i=0; $i < $duplas = $queryDupla->fetch(PDO::FETCH_ASSOC); $i++) {
-            if($i == 2){
+            if($i == 0){
                 $dupla1 = $duplas['id_dupla'];
                 var_dump($dupla1);
                 $jogador1 = $duplas['jogador1'];
@@ -33,16 +33,16 @@
                     $j->pontuaBatida($bateu);
                 }
 
-                if(isset($dupla1)){
+                if($bateu == $jogador1 || $bateu == $jogador2){
 
-                    $soma = $retornaUltimaPartida['ponto_duplas_1'] + $tipo;
-                    $contaBatida = "UPDATE partidas set ponto_duplas_1 = :tBatida WHERE id_partidas = :id_partida";
+                    $soma = $retornaUltimaPartida['ponto_duplas_2'] + $tipo;
+                    $contaBatida = "UPDATE partidas set ponto_duplas_2 = :tBatida WHERE id_partidas = :id_partida";
                     $contaBatida = $conexaoDomino->prepare($contaBatida);
                     $contaBatida->bindValue(":tBatida", $soma);
                     $contaBatida->bindValue(":id_partida", $partida);
                     $contaBatida->execute();
 
-                    if($retornaUltimaPartida['ponto_duplas_1'] > 5){
+                    if($retornaUltimaPartida['ponto_duplas_2'] > 5){
                         echo "<div class='alert alert-primary' role='alert'>Acabou o jogo!</div>";
                     }
     
@@ -51,6 +51,7 @@
                     $sql = $conexaoDomino->prepare($sql);
                     $sql->bindValue(":id", $bateu)*/
                 
+                $j->verificaBatida();
                 
             }
             if($i == 1){
@@ -65,24 +66,21 @@
                 }
 
                 
-                if(isset($dupla2)){
+                if($bateu == $jogador3 || $bateu == $jogador4){
 
-                    $soma = $retornaUltimaPartida['ponto_duplas_2'] + $tipo;
-                    $contaBatida1 = "UPDATE partidas set ponto_duplas_2 = :tBatida WHERE id_partidas = :id_partida";
+                    $soma = $retornaUltimaPartida['ponto_duplas_1'] + $tipo;
+                    $contaBatida1 = "UPDATE partidas set ponto_duplas_1 = :tBatida WHERE id_partidas = :id_partida";
                     $contaBatida1 = $conexaoDomino->prepare($contaBatida1);
                     $contaBatida1->bindValue(":tBatida", $soma);
                     $contaBatida1->bindValue(":id_partida", $partida);
                     $contaBatida1->execute();
 
-                    if($retornaUltimaPartida['ponto_duplas_2'] > 5){
-                        echo "<div class='alert alert-primary' role='alert'>Acabou o jogo!</div>";
-                    }
-    
+                    
                 }
                     /*$sql = "SELECT id_jogador FROM jogador WHERE id_jogador = :id LIMIT 1";
                     $sql = $conexaoDomino->prepare($sql);
                     $sql->bindValue(":id", $bateu)*/
-                
+                $j->verificaBatida();
             }
         }
                                     
