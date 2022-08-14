@@ -78,11 +78,6 @@
             $batida->bindValue(":d", $dupla);
             $batida->execute();
 
-            /*if($batida == true){
-                $sql = "SELECT id_jogador FROM jogador WHERE id_jogador = :id LIMIT 1";
-                $sql = $conexaoDomino->prepare($sql);
-                $sql->bindValue(":id", $bateu)
-            }*/
         }
 
         public function pontuaBatida($pontuaBatida){
@@ -93,27 +88,74 @@
             $consultaJogadorId = $conexaoDomino->prepare($consultaJogadorId);
             $consultaJogadorId->bindValue(":id", $pontuaBatida);
             $consultaJogadorId->execute();
+            $jogador = $consultaJogadorId->fetch();
 
-            $maisUm = 1;
-            $soma = $consultaJogadorId['batidas'] + $maisUm;
-            $batida = "UPDATE jogador set batidas = ".$soma." WHERE id_jogador = :id";
+            //$maisUm = 1;
+            $soma = $jogador['batidas'] + 1;
+            $batida = "UPDATE jogador set batidas = :soma WHERE id_jogador = :id";
             $batida = $conexaoDomino->prepare($batida);
             $batida->bindValue(":id", $pontuaBatida);
+            $batida->bindValue(":soma", $soma);
             $batida->execute();
+
         }
 
 
         public function exibePlacar($dupla){
             
             global $conexaoDomino;
-            $exibePlacar = "SELECT vitoriasPartida FROM duplas WHERE id_dupla = :dupla ORDER BY id_dupla DESC LIMIT 2";
+            $exibePlacar = "SELECT id_partidas, ponto_duplas_1, ponto_duplas_2 FROM partidas ORDER BY id_partidas DESC LIMIT 1";
             $exibePlacar = $conexaoDomino->prepare($exibePlacar);
-            $exibePlacar->bindValue(":dupla", $dupla);
-            //$exibePlacar->bindValue(":dupla2", $dupla2);
             $exibePlacar->execute();
 
-            while($exibe = $exibePlacar->fetch(PDO::FETCH_ASSOC)){
-                echo '<div>'.$exibe["vitoriasPartida"].'</div>';
+            for ($i=0; $i < $exibe = $exibePlacar->fetch(PDO::FETCH_ASSOC); $i++) {
+                if($i = 1){
+                    if($dupla == 1){
+                        $dupla1 = $exibe["ponto_duplas_1"];
+                        echo '<div>'.$dupla1.'</div>';
+                    }
+                }
+                if($i = 2){
+                    if($dupla == 2){
+                        $dupla2 = $exibe["ponto_duplas_2"];
+                        echo '<div>'.$dupla2.'</div>';
+                    }
+                }
+                    
+
+
+                /*while($exibe = $exibePlacar->fetch(PDO::FETCH_ASSOC)){
+                    echo '<div>'.$exibe["ponto_duplas_1"].'</div>';
+                }*/
+            }
+            
+        }
+
+        public function verificaBatida($dupla){
+            
+            global $conexaoDomino;
+            $exibePlacar = "SELECT id_partidas, ponto_duplas_1, ponto_duplas_2 FROM partidas ORDER BY id_partidas DESC LIMIT 1";
+            $exibePlacar = $conexaoDomino->prepare($exibePlacar);
+            $exibePlacar->execute();
+
+            for ($i=0; $i < $exibe = $exibePlacar->fetch(PDO::FETCH_ASSOC); $i++) {
+                if($i = 1){
+                    if($exibe['ponto_duplas_1'] > 5 || $exibe['ponto_duplas_2'] > 5 ){
+                        echo '<div>acabou</div>';
+                    }
+                }
+                if($i = 2){
+                    if($dupla == 2){
+                        $dupla2 = $exibe["ponto_duplas_2"];
+                        echo '<div>'.$dupla2.'</div>';
+                    }
+                }
+                    
+
+
+                /*while($exibe = $exibePlacar->fetch(PDO::FETCH_ASSOC)){
+                    echo '<div>'.$exibe["ponto_duplas_1"].'</div>';
+                }*/
             }
             
         }
