@@ -205,20 +205,21 @@
             //$consultaPartidas->bindValue(":id", $pontuaBatida);
             $consultaPartidas->execute();
 
+            
+            
             while($partida = $consultaPartidas->fetch(PDO::FETCH_ASSOC)){
-                echo '<div class="row">
-                <div class="col-2 text-center p-2 m-1 bg-warning font-weight-bold">Pontos dupla 1</div>
-                        <div class="col-1 text-center p-2 m-1 bg-warning font-weight-bold">'.$partida['ponto_duplas_1'].'</div>
-                        <div class="col-2 text-center p-2 m-1 bg-warning font-weight-bold">Pontos dupla 2</div>
-                        <div class="partida col-1 text-center p-2 m-1 bg-warning font-weight-bold">'.$partida['ponto_duplas_2'].'</div>
-                        <div class="col-1 text-center p-2 m-1 bg-warning font-weight-bold">Id Dupla 1</div>
-                        <div class="partida col-1 text-center p-2 m-1 bg-warning font-weight-bold">'.$partida['id_duplas_1'].'</div>
-                        <div class="col-1 text-center p-2 m-1 bg-warning font-weight-bold">Id Dupla 2</div>
-                        <div class="partida col-1 text-center p-2 m-1 bg-warning font-weight-bold">'.$partida['id_duplas_2'].'</div>
-                    </div> 
-
-                        
-                     ';
+                $data = date_create($partida['dataPartida']);
+                echo '
+                    <tr>
+                        <th scope="row">'.$partida['id_partidas'].'</th>
+                        <td>'.$partida['id_duplas_1'].'</td>
+                        <td>'.$partida['id_duplas_2'].'</td>
+                        <td>'.$partida['ponto_duplas_1'].'</td>
+                        <td>'.$partida['ponto_duplas_2'].'</td>
+                        <td>'.$partida['id_vencedor_FK'].'</td>
+                        <td>'.date_format($data, 'd/m/Y').' às '.date_format($data, 'H:i').'</td>
+                    </tr>
+                    ';
             }
             //$partida = $consultaPartidas->fetch();
 

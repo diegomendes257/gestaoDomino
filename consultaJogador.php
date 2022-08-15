@@ -28,11 +28,33 @@
             </div>
             <div class="container border">
                 <div class="row">
-                            <?php $j->exibeJogadores(); ?>
+                    <?php $j->exibeJogadores(); ?>
                 </div>
             </div>
-            <div class="mb-2 mt-2">
-                <?php $j->exibePartidas(); ?>
+            <hr>
+            <div class="display-4">
+                Resultados
+            </div>
+            <div class="row container mb-2 mt-2">
+                <table class="table table-success table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id Partida</th>
+                            <th scope="col">Dupla 1</th>
+                            <th scope="col">Dupla 2</th>
+                            <th scope="col">Placar 1</th>
+                            <th scope="col">Placar 2</th>
+                            <th scope="col">Vencedor</th>
+                            <th scope="col">Data/Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $j->exibePartidas(); ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row container">
+                
             </div>
             <div class="mb-5 mt-5">
                 <button onclick="window.location.href='index.php';" class="btn btn-sm w-100 btn-success p-3">
