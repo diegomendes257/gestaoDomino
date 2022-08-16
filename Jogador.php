@@ -196,6 +196,45 @@
             
         }
 
+
+        public function exibeDados(){
+
+            global $conexaoDomino;
+
+            $sql = "SELECT id_jogador, nome, batidas FROM jogador ORDER by batidas DESC";
+            $sql = $conexaoDomino->prepare($sql);
+            $sql->execute();
+            while($retorna = $sql->fetch(PDO::FETCH_ASSOC)){
+                echo '
+                    <tr>
+                        <th scope="row">'.$retorna['id_jogador'].'</th>
+                        <td>'.$retorna['nome'].'</td>
+                        <td>'.$retorna['batidas'].'</td>
+                    </tr>
+                    ';
+            }
+        }
+
+        public function exibeDados(){
+
+            global $conexaoDomino;
+
+            $sql = "SELECT id_jogador, nome, batidas FROM jogador ORDER by batidas DESC";
+            $sql = $conexaoDomino->prepare($sql);
+            $sql->execute();
+            while($retorna = $sql->fetch(PDO::FETCH_ASSOC)){
+                echo '
+                    <tr>
+                        <th scope="row">'.$retorna['id_jogador'].'</th>
+                        <td>'.$retorna['nome'].'</td>
+                        <td>'.$retorna['batidas'].'</td>
+                    </tr>
+                    ';
+            }
+        }
+
+
+
         public function exibePartidas(){
 
             global $conexaoDomino;

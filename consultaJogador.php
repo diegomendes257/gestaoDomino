@@ -33,7 +33,25 @@
             </div>
             <hr>
             <div class="display-4">
-                Resultados
+                Quem mais bateu
+            </div>
+            <div class="row container mb-2 mt-2">
+                <table class="table table-info table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id Jogador(a)</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Batidas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $j->exibeDados(); ?>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <div class="display-4">
+                Quem mais levou toque
             </div>
             <div class="row container mb-2 mt-2">
                 <table class="table table-success table-hover">
@@ -53,6 +71,7 @@
                     </tbody>
                 </table>
             </div>
+            
             <div class="row container">
                 
             </div>
