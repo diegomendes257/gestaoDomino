@@ -215,7 +215,7 @@
             }
         }
 
-        public function exibeDados(){
+        public function exibeDados1(){
 
             global $conexaoDomino;
 
