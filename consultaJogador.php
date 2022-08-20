@@ -71,7 +71,7 @@
             <div class="display-4">
                 Rodadas
             </div>
-            <div class="row container mb-2 mt-2">
+            <div id='tabela-partida' class="row container mb-2 mt-2">
                 <table class="table table-success table-hover">
                     <thead>
                         <tr>

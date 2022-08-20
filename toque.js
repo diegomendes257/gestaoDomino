@@ -44,10 +44,9 @@ $(document).ready(function(){
                 },
                 success: function(){
                     alert('Sucesso!');
-                    window.location.reload();
                 }
             });
-            
+            window.location.reload();
         });
     });
 
@@ -69,9 +68,10 @@ $(document).ready(function(){
                 },
                 success: function(){
                     alert('Sucesso!');
-                    window.location.reload();
+                    
                 }
             });
+            window.location.reload();
         });
     });
 
@@ -93,9 +93,10 @@ $(document).ready(function(){
                 },
                 success: function(){
                     alert('Sucesso!');
-                    window.location.reload();
+                    
                 }
             });
+            window.location.reload();
         });
     });
 
@@ -117,9 +118,10 @@ $(document).ready(function(){
                 },
                 success: function(){
                     alert('Sucesso!');
-                    window.location.reload();
+                    
                 }
             });
+            window.location.reload();
         });
     });
 

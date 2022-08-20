@@ -11,13 +11,11 @@
         for ($i=0; $i < $duplas = $queryDupla->fetch(PDO::FETCH_ASSOC); $i++) {
             if($i == 0){
                 $dupla1 = $duplas['id_dupla'];
-                var_dump($dupla1);
                 $jogador1 = $duplas['jogador1'];
                 $jogador2 = $duplas['jogador2'];
             }
             if($i == 1){
                 $dupla2 = $duplas['id_dupla'];
-                var_dump($dupla2);
                 $jogador3 = $duplas['jogador1'];
                 $jogador4 = $duplas['jogador2'];
             }
