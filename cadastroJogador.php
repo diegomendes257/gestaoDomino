@@ -4,11 +4,9 @@
     $j = new Jogador();
     
     if(isset($_POST['nome'])){
-    
         $nome = filter_input(INPUT_POST, 'nome', FILTER_DEFAULT);
         $j->cadastro($nome);
     }
-
 ?>
 
 <!DOCTYPE html>

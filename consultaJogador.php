@@ -50,8 +50,26 @@
                 </table>
             </div>
             <hr>
+            <hr>
             <div class="display-4">
                 Quem mais levou toque
+            </div>
+            <div class="row container mb-2 mt-2">
+                <table class="table table-success table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">Id Jogador(a)</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Toques</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $j->exibeDados1(); ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="display-4">
+                Rodadas
             </div>
             <div class="row container mb-2 mt-2">
                 <table class="table table-success table-hover">
@@ -62,7 +80,6 @@
                             <th scope="col">Dupla 2</th>
                             <th scope="col">Placar 1</th>
                             <th scope="col">Placar 2</th>
-                            <th scope="col">Vencedor</th>
                             <th scope="col">Data/Hora</th>
                         </tr>
                     </thead>

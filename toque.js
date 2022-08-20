@@ -29,10 +29,8 @@ $(document).ready(function(){
         
         const id_jogador_toque = $('#1').text(); // id do jogador
         const id1 = $('#1').attr('id');
-        //alert(id1);
         $('#confirmaToque1').click(function(){
             var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
-            //alert(id_jogador_toque + id1 + selecao);
 
             $.ajax({
                 type: 'POST',
@@ -45,7 +43,6 @@ $(document).ready(function(){
                     console.log('carregando...');
                 },
                 success: function(){
-                    //alert(id_jogador_toque + selecao)
                     alert('Sucesso!');
                     window.location.reload();
                 }
@@ -54,14 +51,11 @@ $(document).ready(function(){
         });
     });
 
-    $('#jogador2').click(function(event){
-        event.preventDefault();
+    $('#jogador2').click(function(){
         const id_jogador_toque = $('#2').text();
         const id2 = $('#2').attr('id');
-        //alert(id2);
         $('#confirmaToque2').click(function(){
             var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
-            //alert(idToque + id2 + selecao);
 
             $.ajax({
                 type: 'POST',
@@ -74,7 +68,6 @@ $(document).ready(function(){
                     console.log('carregando...');
                 },
                 success: function(){
-                    //alert(id_jogador_toque + selecao)
                     alert('Sucesso!');
                     window.location.reload();
                 }
@@ -82,14 +75,11 @@ $(document).ready(function(){
         });
     });
 
-    $('#jogador3').click(function(event){
-        event.preventDefault();
+    $('#jogador3').click(function(){
         const id_jogador_toque = $('#3').text();
         const id3 = $('#3').attr('id');
-        //alert(id3);
         $('#confirmaToque3').click(function(){
             var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
-            //alert(idToque + id3 + selecao);
 
             $.ajax({
                 type: 'POST',
@@ -102,7 +92,6 @@ $(document).ready(function(){
                     console.log('carregando...');
                 },
                 success: function(){
-                    //alert(id_jogador_toque + selecao)
                     alert('Sucesso!');
                     window.location.reload();
                 }
@@ -110,13 +99,11 @@ $(document).ready(function(){
         });
     });
 
-    $('#jogador4').click(function(event){
-        event.preventDefault();
+    $('#jogador4').click(function(){
         const id_jogador_toque = $('#4').text();
         const id4 = $('#4').attr('id');
         $('#confirmaToque4').click(function(){
             var selecao = document.querySelector('input[name=exampleRadios]:checked').value;
-            //alert(idToque + id4 + selecao);
 
             $.ajax({
                 type: 'POST',
@@ -129,7 +116,6 @@ $(document).ready(function(){
                     console.log('carregando...');
                 },
                 success: function(){
-                    //alert(id_jogador_toque + selecao)
                     alert('Sucesso!');
                     window.location.reload();
                 }
@@ -157,17 +143,10 @@ $(document).ready(function(){
                 console.log('carregando...');
             },
             success: function(){
-                //alert(id_jogador_toque + selecao)
                 alert('Sucesso!');
                 alert(idBatida + selecaoBatida);
             }
         });
-        /*let checkbox = document.getElementById('exampleCheck1');
-        if(checkbox.checked) {
-            alert("O cliente marcou o checkbox");
-        } else {
-            console.log("O cliente não marcou o checkbox");
-        }*/
         window.location.reload();
     });
 
@@ -187,7 +166,6 @@ $(document).ready(function(){
                 console.log('carregando...');
             },
             success: function(){
-                //alert(id_jogador_toque + selecao)
                 alert('Sucesso!');
                 alert(idBatida + selecaoBatida);
             }
@@ -212,7 +190,6 @@ $(document).ready(function(){
                 console.log('carregando...');
             },
             success: function(){
-                //alert(id_jogador_toque + selecao)
                 alert('Sucesso!');
                 alert(idBatida + selecaoBatida);
             }
@@ -237,10 +214,8 @@ $(document).ready(function(){
                 console.log('carregando...');
             },
             success: function(){
-                //alert(id_jogador_toque + selecao)
                 alert('Sucesso!');
                 alert(idBatida + selecaoBatida);
-                
             }
         });
         window.location.reload();
