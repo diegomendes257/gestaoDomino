@@ -74,6 +74,11 @@
         public function batida($bateu, $tipo, $partida, $dupla){
 
             global $conexaoDomino;
+
+            /*if($tipo == 0){
+                $tipo = 0;
+            }*/
+
             $batida = "INSERT INTO batida(bateu, tipo, id_partidas_FK, id_dupla_FK) VALUE(:b, :t, :p, :d)";
             $batida = $conexaoDomino->prepare($batida);
             $batida->bindValue(":b", $bateu);
@@ -102,6 +107,28 @@
             $batida->bindValue(":soma", $soma);
             $batida->execute();
         }
+
+
+        public function acumulaPontos($pontuaBatida, $tipo){
+
+            global $conexaoDomino;
+
+            $sqlAcumulo = "SELECT acumulo FROM jogador WHERE id_jogador = :id";
+            $sqlAcumulo = $conexaoDomino->prepare($sqlAcumulo);
+            $sqlAcumulo->bindValue(":id", $pontuaBatida);
+            $sqlAcumulo->execute();
+            $jogador = $sqlAcumulo->fetch();
+
+            //$maisUm = 1;
+            $soma = $jogador['acumulo'] + $tipo;
+            $acumula = "UPDATE jogador set acumulo = :soma WHERE id_jogador = :id";
+            $acumula = $conexaoDomino->prepare($acumula);
+            $acumula->bindValue(":id", $pontuaBatida);
+            $acumula->bindValue(":soma", $soma);
+            $acumula->execute();
+        }
+
+
 
         public function pontuaToque($pontuaToque){
 
@@ -225,6 +252,30 @@
         }
 
 
+        public function acumulado(){
+
+            global $conexaoDomino;
+
+            $sql = "SELECT id_jogador, nome, acumulo FROM jogador ORDER by acumulo DESC";
+            $sql = $conexaoDomino->prepare($sql);
+            $sql->execute();
+            while($retorna = $sql->fetch(PDO::FETCH_ASSOC)){
+                if($retorna['acumulo'] == ''){
+        
+                }else{
+                    echo '
+                    <tr>
+                        <th scope="row">'.$retorna['id_jogador'].'</th>
+                        <td>'.$retorna['nome'].'</td>
+                        <td>'.$retorna['acumulo'].'</td>
+                    </tr>
+                    ';
+                }
+                
+            }
+        }
+
+
         public function exibeDados1(){
 
             global $conexaoDomino;
@@ -267,6 +318,63 @@
                     ';
             }
             //$partida = $consultaPartidas->fetch();
+        }
+
+
+        public function exibeBatidas(){
+
+            global $conexaoDomino;
+
+            /*$sqlPartida = "SELECT id_partidas FROM partidas ORDER BY id_partidas DESC LIMIT 11";
+            $sqlPartida = $conexaoDomino->prepare($sqlPartida);
+            $sqlPartida->execute();*/
+
+            
+            
+            
+            //$id_partida1 = intval($id_partida);
+            $sql = "SELECT * FROM batida ORDER BY id_batida DESC LIMIT 11";
+            //$sql = "SELECT * FROM batida WHERE id_partidas_FK = :idPartida ORDER BY id_batida DESC LIMIT 1";
+            $sql = $conexaoDomino->prepare($sql);
+            //$sql->bindValue(":idPartida", $part);
+            $sql->execute();
+
+            while($batidas = $sql->fetch(PDO::FETCH_ASSOC)){
+                $data = date_create($batidas['dataDupla']);
+                //$part = intval($sqlPartida->fetch(PDO::FETCH_ASSOC));
+                switch ($batidas['tipo']) {
+                    case "1":
+                        $batida1 = 'normal';
+                        break;
+                    case "2":
+                        $batida1 = 'carroça';
+                        break;
+                    case "3":
+                        $batida1 = 'lá e lô';
+                        break;
+                    case "4":
+                        $batida1 = 'cruzada';
+                        break;
+                    case "0":
+                        $batida1 = 'cont. pontos';
+                        break;
+                }
+
+                $sqlNome = "SELECT id_jogador, nome FROM jogador WHERE id_jogador = :id";
+                $sqlNome = $conexaoDomino->prepare($sqlNome);
+                $sqlNome->bindValue(":id", $batidas['bateu']);
+                $sqlNome->execute();
+                $imprimeNome = $sqlNome->fetch(PDO::FETCH_ASSOC);
+
+                echo '
+                    <tr>
+                        <th scope="row">'.$batidas['id_batida'].'</th>
+                        <td>'.$imprimeNome['nome'].'</td>
+                        <td>'.$batida1.'</td>
+                        <td>'.date_format($data, 'd/m/Y').' às '.date_format($data, 'H:i').'</td>
+                    </tr>
+                    ';
+            }
         }
     }
 ?>

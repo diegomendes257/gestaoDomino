@@ -21,7 +21,13 @@
             }
         }
 
-        /*$id_jogador = 'SELECT id_jogador FROM jogador limit 1';
+        /*$sqlPartida = "SELECT id_partidas FROM partidas ORDER BY id_partidas DESC LIMIT 1";
+        $sqlPartida = $conexaoDomino->prepare($sqlPartida);
+        $sqlPartida->execute();
+        $ultimaPartida = $sqlPartida->fetch(PDO::FETCH_ASSOC);
+        
+
+        $id_jogador = 'SELECT id_jogador FROM jogador limit 1';
         $id_jogador = $conexaoDomino->prepare($id_jogador);
         $id_jogador->execute();*/
 ?>
@@ -204,7 +210,7 @@
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="0">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CONTAGEM DE PONTOS
                                                             </label>
@@ -327,7 +333,7 @@
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="0">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CONTAGEM DE PONTOS
                                                             </label>
@@ -450,7 +456,7 @@
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="0">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CONTAGEM DE PONTOS
                                                             </label>
@@ -573,7 +579,7 @@
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="Contagem de pontos">
+                                                            <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="0">
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 CONTAGEM DE PONTOS
                                                             </label>
@@ -594,6 +600,29 @@
                 </div>
             </div>
         </div>
+
+        <hr>
+        <div class="container">
+            <div class="display-4 text-center">
+                BATIDAS
+            </div>
+            <div id='tabela-partida' class="row container mb-1 mt-2">
+                <table class="table table-success table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id Batida</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Tipo de batida</th>
+                            <th scope="col">Data / Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $j->exibeBatidas(); ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
         <div class="row mt-3 text-center">
             <div class="col">
                 <button onclick="window.location.href='jogo.php';" class="btn btn-sm btn-success p-2 m-2">

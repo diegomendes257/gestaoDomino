@@ -50,8 +50,24 @@
                 </table>
             </div>
             <hr>
-            <hr>
             <div class="display-4">
+                Acúmulo de pontos
+            </div>
+            <div class="row container mb-2 mt-2">
+                <table class="table table-info table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id Jogador(a)</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Acumulado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $j->acumulado(); ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="display-4">
                 Quem mais levou toque
             </div>
             <div class="row container mb-2 mt-2">
@@ -67,11 +83,11 @@
                         <?php $j->exibeDados1(); ?>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
             <div class="display-4">
                 Rodadas
             </div>
-            <div id='tabela-partida' class="row container mb-2 mt-2">
+            <div id='tabela-partida' class="row container mb-1 mt-2">
                 <table class="table table-success table-hover">
                     <thead>
                         <tr>
@@ -87,10 +103,6 @@
                         <?php $j->exibePartidas(); ?>
                     </tbody>
                 </table>
-            </div>
-            
-            <div class="row container">
-                
             </div>
             <div class="mb-5 mt-5">
                 <button onclick="window.location.href='index.php';" class="btn btn-sm w-100 btn-success p-3">

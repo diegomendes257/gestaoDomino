@@ -8,7 +8,6 @@
         $j = new Jogador();
 
         $bateu = intval($_POST['bateu']);
-        var_dump($bateu);
         $tipo = $_POST['tipo'];
 
         $selecionaUltimaPartida = "SELECT id_partidas, ponto_duplas_1, ponto_duplas_2 FROM partidas ORDER BY id_partidas DESC LIMIT 1";
@@ -29,18 +28,24 @@
                 $jogador2 = $duplas['jogador2'];
 
                 if($bateu == $jogador1 || $bateu == $jogador2){
+
                     $j->batida($bateu, $tipo, $partida, $dupla1);
                     $j->pontuaBatida($bateu);
                 }
 
                 if($bateu == $jogador1 || $bateu == $jogador2){
 
+                    if($tipo == 0){
+                        $tipo = 1;
+                    }
                     $soma = $retornaUltimaPartida['ponto_duplas_2'] + $tipo;
                     $contaBatida = "UPDATE partidas set ponto_duplas_2 = :tBatida WHERE id_partidas = :id_partida";
                     $contaBatida = $conexaoDomino->prepare($contaBatida);
                     $contaBatida->bindValue(":tBatida", $soma);
                     $contaBatida->bindValue(":id_partida", $partida);
                     $contaBatida->execute();
+
+                    $j->acumulaPontos($bateu, $tipo);
 
                     if($retornaUltimaPartida['ponto_duplas_2'] > 5){
                         echo "<div class='alert alert-primary' role='alert'>Acabou o jogo!</div>";
@@ -61,6 +66,10 @@
                 $jogador4 = $duplas['jogador2'];
 
                 if($bateu == $jogador3 || $bateu == $jogador4){
+
+                    /*if($tipo == 0){
+                        $tipo = 1;
+                    }*/
                     $j->batida($bateu, $tipo, $partida, $dupla2);
                     $j->pontuaBatida($bateu);
                 }
@@ -68,6 +77,9 @@
                 
                 if($bateu == $jogador3 || $bateu == $jogador4){
 
+                    if($tipo == 0){
+                        $tipo = 1;
+                    }
                     $soma = $retornaUltimaPartida['ponto_duplas_1'] + $tipo;
                     $contaBatida1 = "UPDATE partidas set ponto_duplas_1 = :tBatida WHERE id_partidas = :id_partida";
                     $contaBatida1 = $conexaoDomino->prepare($contaBatida1);
@@ -75,6 +87,7 @@
                     $contaBatida1->bindValue(":id_partida", $partida);
                     $contaBatida1->execute();
 
+                    $j->acumulaPontos($bateu, $tipo);
                     
                 }
                     /*$sql = "SELECT id_jogador FROM jogador WHERE id_jogador = :id LIMIT 1";
