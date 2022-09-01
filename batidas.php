@@ -50,7 +50,6 @@
                     if($retornaUltimaPartida['ponto_duplas_2'] > 5){
                         echo "<div class='alert alert-primary' role='alert'>Acabou o jogo!</div>";
                     }
-    
                 }
                     /*$sql = "SELECT id_jogador FROM jogador WHERE id_jogador = :id LIMIT 1";
                     $sql = $conexaoDomino->prepare($sql);
@@ -74,7 +73,6 @@
                     $j->pontuaBatida($bateu);
                 }
 
-                
                 if($bateu == $jogador3 || $bateu == $jogador4){
 
                     if($tipo == 0){
@@ -88,19 +86,14 @@
                     $contaBatida1->execute();
 
                     $j->acumulaPontos($bateu, $tipo);
-                    
                 }
                     /*$sql = "SELECT id_jogador FROM jogador WHERE id_jogador = :id LIMIT 1";
                     $sql = $conexaoDomino->prepare($sql);
                     $sql->bindValue(":id", $bateu)*/
                 $j->verificaBatida();
             }
-        }
-                                    
+        }             
         //$selecionaJogador1 = $conexaoDomino->prepare($selecionaJogador1);
         //$selecionaJogador1->execute();
-
     }
-    
-
 ?>

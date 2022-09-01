@@ -9,7 +9,7 @@
             if ($nome == '') {
                 echo "<div class='alert alert-danger' role='alert'>Você precisa digitar um nome!</div>";
             }else{
-                $consultaNome = "SELECT nome FROM jogador  WHERE nome = :nome";
+                $consultaNome = "SELECT nome FROM jogador WHERE nome = :nome";
                 $consultaNome = $conexaoDomino->prepare($consultaNome);
                 $consultaNome->bindValue(":nome", $nome);
                 $consultaNome->execute();
@@ -53,6 +53,56 @@
 
             $exibeNomeId = $consultaJogadorId->fetch(PDO::FETCH_ASSOC);
             echo $exibeNomeId['nome'];
+        }
+
+
+        public function exibeDupla(){
+            
+            global $conexaoDomino;
+
+            $sql = "SELECT jogador1, jogador2 FROM duplas";
+            $sql = $conexaoDomino->prepare($sql);
+            //$sql->bindValue(":id", $id);
+            $sql->execute();
+
+            while($exibeDuplas = $sql->fetch(PDO::FETCH_ASSOC)){
+                
+                if($exibeDuplas['jogador1']){
+                    $id = $exibeDuplas['jogador1'];
+                    $sqlNome = "SELECT id_jogador, nome FROM jogador WHERE id_jogador = :id";
+                    $sqlNome = $conexaoDomino->prepare($sqlNome);
+                    $sqlNome->bindValue(":id", $id);
+                    $sqlNome->execute();
+                    $sqlNomeExibe = $sqlNome->fetch(PDO::FETCH_ASSOC);
+
+                    echo '<div class="col-2">'.$sqlNomeExibe['nome'].' ';
+                    //echo '<br />';
+                    //echo '</div>';
+                    echo '';
+                
+                }if($exibeDuplas['jogador2']){
+                    $id = $exibeDuplas['jogador2'];
+                    $sqlNome = "SELECT id_jogador, nome FROM jogador WHERE id_jogador = :id";
+                    $sqlNome = $conexaoDomino->prepare($sqlNome);
+                    $sqlNome->bindValue(":id", $id);
+                    $sqlNome->execute();
+                    $sqlNomeExibe = $sqlNome->fetch(PDO::FETCH_ASSOC);
+
+                    echo ''.$sqlNomeExibe['nome'].' ';
+                    echo '<br />';
+                    echo '</div>';
+                }
+                    //if($exibeNome['id_jogador'] == $exibeDuplas['jogador1'] || $exibeNome['id_jogador'] == $exibeDuplas['jogador2']){
+                    //    echo 'Jogador 1 = '.$exibeNome['nome'].' / ';
+                    //    echo '<br />';
+                    //    echo 'Jogador 2 = '.$exibeNome['nome'].' / ';    
+                    //}
+                    //echo 'Jogador 1 = '.$exibeDuplas['jogador1'].' / ';
+                    
+                    //echo 'Jogador 2 = '.$exibeDuplas['jogador2'];   
+                    //echo '<br />';
+                
+            }
         }
 
 

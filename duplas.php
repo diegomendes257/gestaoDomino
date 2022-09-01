@@ -99,6 +99,18 @@
                     VOLTAR
                 </button>
             </div>
+            <div class="text-center">
+                <div class="h3 mt-5">
+                    DUPLAS JÁ EXISTENTES
+                </div> 
+                <div>
+                    <div class="row">
+                        <?php
+                            $j->exibeDupla();
+                        ?>
+                    </div>
+                </div>
+            </div>
             <div>
                 <p class="text-monospace text-center mt-3">
                     Criado e desenvolvido por: <br />Diego Mendes
