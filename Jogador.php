@@ -60,48 +60,52 @@
             
             global $conexaoDomino;
 
-            $sql = "SELECT jogador1, jogador2 FROM duplas";
+            $sql = "SELECT DISTINCT jogador1, jogador2 FROM duplas";
             $sql = $conexaoDomino->prepare($sql);
             //$sql->bindValue(":id", $id);
             $sql->execute();
-
+            $d = 0;
             while($exibeDuplas = $sql->fetch(PDO::FETCH_ASSOC)){
-                
+                //echo ''.$d;
                 if($exibeDuplas['jogador1']){
-                    $id = $exibeDuplas['jogador1'];
+                    $id1 = $exibeDuplas['jogador1'];
                     $sqlNome = "SELECT id_jogador, nome FROM jogador WHERE id_jogador = :id";
                     $sqlNome = $conexaoDomino->prepare($sqlNome);
-                    $sqlNome->bindValue(":id", $id);
+                    $sqlNome->bindValue(":id", $id1);
                     $sqlNome->execute();
-                    $sqlNomeExibe = $sqlNome->fetch(PDO::FETCH_ASSOC);
-
-                    echo '<div class="col-2">'.$sqlNomeExibe['nome'].' ';
-                    //echo '<br />';
-                    //echo '</div>';
-                    echo '';
+                    $sqlNomeExibe1 = $sqlNome->fetch(PDO::FETCH_ASSOC);
                 
                 }if($exibeDuplas['jogador2']){
-                    $id = $exibeDuplas['jogador2'];
+                    $id2 = $exibeDuplas['jogador2'];
                     $sqlNome = "SELECT id_jogador, nome FROM jogador WHERE id_jogador = :id";
                     $sqlNome = $conexaoDomino->prepare($sqlNome);
-                    $sqlNome->bindValue(":id", $id);
+                    $sqlNome->bindValue(":id", $id2);
                     $sqlNome->execute();
-                    $sqlNomeExibe = $sqlNome->fetch(PDO::FETCH_ASSOC);
-
-                    echo ''.$sqlNomeExibe['nome'].' ';
-                    echo '<br />';
-                    echo '</div>';
-                }
-                    //if($exibeNome['id_jogador'] == $exibeDuplas['jogador1'] || $exibeNome['id_jogador'] == $exibeDuplas['jogador2']){
-                    //    echo 'Jogador 1 = '.$exibeNome['nome'].' / ';
-                    //    echo '<br />';
-                    //    echo 'Jogador 2 = '.$exibeNome['nome'].' / ';    
-                    //}
-                    //echo 'Jogador 1 = '.$exibeDuplas['jogador1'].' / ';
+                    $sqlNomeExibe2 = $sqlNome->fetch(PDO::FETCH_ASSOC);
                     
-                    //echo 'Jogador 2 = '.$exibeDuplas['jogador2'];   
-                    //echo '<br />';
-                
+                    $sqlDupla = "SELECT id_dupla FROM duplas where jogador1 = :j1 and jogador2 = :j2";
+                    $sqlDupla = $conexaoDomino->prepare($sqlDupla);
+                    $sqlDupla->bindValue(":j1", $id1);
+                    $sqlDupla->bindValue(":j2", $id2);
+                    $sqlDupla->execute();
+                    $idDuplas = $sqlDupla->fetch(PDO::FETCH_ASSOC);
+
+                    echo '<tr>
+                            <td>
+                                '.$idDuplas['id_dupla'].'
+                            </td>
+                            <td>
+                                <b>'.$sqlNomeExibe1['nome'].'</b>
+                            </td>
+                            <td>
+                                &
+                            </td>
+                            <td>
+                            <b>'.$sqlNomeExibe2['nome'].'</b>
+                            </td>
+                        </tr>';
+                }
+                $d = $d + 1;
             }
         }
 
@@ -125,10 +129,6 @@
 
             global $conexaoDomino;
 
-            /*if($tipo == 0){
-                $tipo = 0;
-            }*/
-
             $batida = "INSERT INTO batida(bateu, tipo, id_partidas_FK, id_dupla_FK) VALUE(:b, :t, :p, :d)";
             $batida = $conexaoDomino->prepare($batida);
             $batida->bindValue(":b", $bateu);
@@ -149,7 +149,6 @@
             $consultaJogadorId->execute();
             $jogador = $consultaJogadorId->fetch();
 
-            //$maisUm = 1;
             $soma = $jogador['batidas'] + 1;
             $batida = "UPDATE jogador set batidas = :soma WHERE id_jogador = :id";
             $batida = $conexaoDomino->prepare($batida);
@@ -169,7 +168,6 @@
             $sqlAcumulo->execute();
             $jogador = $sqlAcumulo->fetch();
 
-            //$maisUm = 1;
             $soma = $jogador['acumulo'] + $tipo;
             $acumula = "UPDATE jogador set acumulo = :soma WHERE id_jogador = :id";
             $acumula = $conexaoDomino->prepare($acumula);
@@ -190,7 +188,6 @@
             $pontuaToqueId->execute();
             $jogador = $pontuaToqueId->fetch();
 
-            //$maisUm = 1;
             $soma = $jogador['toque'] + 1;
             $toque = "UPDATE jogador set toque = :soma WHERE id_jogador = :id";
             $toque = $conexaoDomino->prepare($toque);
@@ -223,7 +220,7 @@
             }
         }
 
-        
+
         public function verificaBatida(){
             
             global $conexaoDomino;
@@ -297,7 +294,7 @@
                         <td>'.$retorna['nome'].'</td>
                         <td>'.$retorna['batidas'].'</td>
                     </tr>
-                    ';
+                ';
             }
         }
 
@@ -379,9 +376,6 @@
             $sqlPartida = $conexaoDomino->prepare($sqlPartida);
             $sqlPartida->execute();*/
 
-            
-            
-            
             //$id_partida1 = intval($id_partida);
             $sql = "SELECT * FROM batida ORDER BY id_batida DESC LIMIT 11";
             //$sql = "SELECT * FROM batida WHERE id_partidas_FK = :idPartida ORDER BY id_batida DESC LIMIT 1";

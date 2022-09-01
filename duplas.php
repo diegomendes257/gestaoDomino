@@ -100,14 +100,25 @@
                 </button>
             </div>
             <div class="text-center">
-                <div class="h3 mt-5">
+                <div class="h3 mt-5 mb-4">
                     DUPLAS JÁ EXISTENTES
                 </div> 
                 <div>
                     <div class="row">
-                        <?php
-                            $j->exibeDupla();
-                        ?>
+                        <table class="table table-success table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID DUPLA</th>
+                                    <th scope="col">JOGADOR(A) 1</th>
+                                    <th scope="col">&</th>
+                                    <th scope="col">JOGADOR(A) 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $j->exibeDupla();   ?>
+                            </tbody>
+                        </table>
+                        
                     </div>
                 </div>
             </div>
