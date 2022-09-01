@@ -610,7 +610,7 @@
                 <table class="table table-success table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Id Batida</th>
+                            <th scope="col">Partida</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Tipo de batida</th>
                             <th scope="col">Data / Hora</th>

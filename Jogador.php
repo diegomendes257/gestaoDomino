@@ -368,7 +368,7 @@
 
                 echo '
                     <tr>
-                        <th scope="row">'.$batidas['id_batida'].'</th>
+                        <th scope="row">'.$batidas['id_partidas_FK'].'</th>
                         <td>'.$imprimeNome['nome'].'</td>
                         <td>'.$batida1.'</td>
                         <td>'.date_format($data, 'd/m/Y').' às '.date_format($data, 'H:i').'</td>
