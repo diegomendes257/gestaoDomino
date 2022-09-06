@@ -24,6 +24,23 @@
                 echo '<br />';
             }
         }
+
+        function exibeBatidas($id, $num, $nome){
+            global $conexaoDomino;
+            $sql = 'SELECT COUNT(bateu)
+            FROM batida
+            WHERE bateu = :id and tipo = :t';
+            $sql = $conexaoDomino->prepare($sql);
+            $sql->bindValue(":id", $id);
+            $sql->bindValue(":t", $num);
+            $sql->execute();
+            while($mostraSql = $sql->fetch(PDO::FETCH_ASSOC)){
+                //echo ''.$mostraSql['tipo'].'nome: '.$nome;
+                echo 'Você bateu '.$mostraSql['COUNT(bateu)'].' '.$nome;
+                //echo ''.$mostraSql['bateu'];
+                echo '<br />';
+            }
+        }
         
     }
 ?>
