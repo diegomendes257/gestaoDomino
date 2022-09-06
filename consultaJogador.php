@@ -2,6 +2,16 @@
     require "conexaoDomino.php";
     require "Jogador.php";
     $j = new Jogador();
+
+    //if(isset($_GET['exibeMais'])){
+    //    $mais = $_GET['exibeMais'];
+    //}
+    if(isset($_GET['mais'])){
+        $mais = true;
+    }else{
+        $mais = false;
+    }
+    
 ?>
 
 
@@ -13,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./css/jquery-3.6.0.min.js"></script>
+    <!-- <script type="text/javascript" src="logica.js"></script> -->
     <title>FORMAÇÃO DE DUPLAS</title>
 </head>
 <body>
@@ -87,7 +98,7 @@
             <div class="display-4">
                 Rodadas
             </div>
-            <div id='tabela-partida' class="row container mb-1 mt-2">
+            <div id='tabela-partida' class="table-responsive">
                 <table class="table table-success table-hover">
                     <thead>
                         <tr>
@@ -100,9 +111,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $j->exibePartidas(); ?>
+                        <?php $j->exibePartidas($mais); ?>
+                        <tr id="mais">
+                        </tr>
                     </tbody>
                 </table>
+                <button onclick="window.location.href='consultaJogador.php?mais=true';" class="m-1 btn btn-sm w-25 btn-success">
+                    mostrar todas as partidas
+                </button>
+                <button onclick="window.location.href='consultaJogador.php';" class="m-1 btn btn-sm w-25 btn-success">
+                    mostrar menos
+                </button>
+                <!-- <button id="botaoVerMais" class="btn btn-sm w-100 btn-success p-3">
+                    VER MAIS PARTIDAS
+                </button> -->
             </div>
             <div class="mb-5 mt-5">
                 <button onclick="window.location.href='index.php';" class="btn btn-sm w-100 btn-success p-3">

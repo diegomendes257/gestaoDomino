@@ -37,7 +37,7 @@
             $consultaJogador->execute();
 
             while($exibeNome = $consultaJogador->fetch(PDO::FETCH_ASSOC)){
-                echo '<div class="jog col text-center p-2 m-1 bg-warning font-weight-bold" value="'.$exibeNome['id_jogador'].'">'.$exibeNome['nome'].'</a></div>';
+                echo '<div class="jog col text-center p-2 m-1 bg-warning font-weight-bold" value="'.$exibeNome['id_jogador'].'"><a href="exibeJogador.php?id='.$exibeNome['id_jogador'].'">'.$exibeNome['nome'].'</a></div>';
             }
         }
 
@@ -103,7 +103,8 @@
                             <td>
                             <b>'.$sqlNomeExibe2['nome'].'</b>
                             </td>
-                        </tr>';
+                        </tr>'
+                    ;
                 }
                 $d = $d + 1;
             }
@@ -342,11 +343,15 @@
         }
 
 
-        public function exibePartidas(){
+        public function exibePartidas($mais){
 
             global $conexaoDomino;
 
-            $consultaPartidas = "SELECT * FROM partidas";
+            if($mais == false){
+                $consultaPartidas = "SELECT * FROM partidas ORDER by id_partidas DESC LIMIT 5";
+            }if($mais == true){
+                $consultaPartidas = "SELECT * FROM partidas";
+            }
             $consultaPartidas = $conexaoDomino->prepare($consultaPartidas);
             //$consultaPartidas->bindValue(":id", $pontuaBatida);
             $consultaPartidas->execute();
@@ -364,7 +369,6 @@
                     </tr>
                     ';
             }
-            //$partida = $consultaPartidas->fetch();
         }
 
 

@@ -88,9 +88,32 @@ $(document).ready(function(){
         
         if(click > 4){
             alert("PREPARE-SE! O jogo vai começar!");
-            window.location.href="jogo.php"; 
+            window.location.href="jogo.php";
         }else{
             alert('Você ainda não cadastrou as duplas');
         }
     });
+
+
+    //------------------------------BOTÃO VER MAIS
+
+    /*$('#botaoVerMais').click(function(e){
+        //e.preventDefault();
+        let exibeMais = true;
+
+        $.ajax({
+            type: 'get',
+            url: 'consultaJogador.php',
+            data: {
+                exibeMais: exibeMais
+                },
+            beforeSend : function () {
+                console.log('Já iremos exibir...');
+              },
+            success: function(data){
+                $('#mais').html(data)
+                console.log('Clique para ver mais');
+            }
+        });
+    });*/
 });
