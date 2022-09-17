@@ -324,6 +324,30 @@
         }
 
 
+        public function batidasHoje(){
+
+            global $conexaoDomino;
+
+            $sql = "SELECT id_jogador, nome, acumulo FROM jogador ORDER by acumulo DESC";
+            $sql = $conexaoDomino->prepare($sql);
+            $sql->execute();
+            while($retorna = $sql->fetch(PDO::FETCH_ASSOC)){
+                if($retorna['acumulo'] == ''){
+        
+                }else{
+                    echo '
+                    <tr>
+                        <th scope="row">'.$retorna['id_jogador'].'</th>
+                        <td>'.$retorna['nome'].'</td>
+                        <td>'.$retorna['acumulo'].'</td>
+                    </tr>
+                    ';
+                }
+                
+            }
+        }
+
+
         public function exibeDados1(){
 
             global $conexaoDomino;

@@ -95,8 +95,26 @@
                     </tbody>
                 </table>
             </div> -->
+            <div class="display-4 mt-3">
+                Batidas Hoje
+            </div>
+            <div class="row container mb-3">
+                <table class="table table-success table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Jogadores</th>
+                            <th scope="col">Batidas hoje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $j->exibePartidas($mais); ?>
+                        <tr id="mais">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="display-4">
-                Rodadas
+                Partidas
             </div>
             <div id='tabela-partida' class="table-responsive">
                 <table class="table table-success table-hover">
