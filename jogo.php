@@ -178,7 +178,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Como <?php $j->exibeNome($jogador1); ?> bateu?</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -301,7 +301,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Como <?php $j->exibeNome($jogador2); ?> bateu?</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -424,7 +424,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Como <?php $j->exibeNome($jogador3); ?> bateu?</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -547,7 +547,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Como foi a batida?</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Como <?php $j->exibeNome($jogador4); ?> bateu?</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>

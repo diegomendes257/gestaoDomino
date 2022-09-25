@@ -448,5 +448,19 @@
                     ';
             }
         }
+
+
+        public function exibeNome($id){
+
+            global $conexaoDomino;
+
+            $sqlNome = "SELECT id_jogador, nome FROM jogador WHERE id_jogador = :id";
+            $sqlNome = $conexaoDomino->prepare($sqlNome);
+            $sqlNome->bindValue(":id", $id);
+            $sqlNome->execute();
+            $imprimeNome = $sqlNome->fetch(PDO::FETCH_ASSOC);
+
+            echo $imprimeNome['nome'];
+        }
     }
 ?>
