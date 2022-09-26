@@ -102,14 +102,13 @@
                 <table class="table table-success table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Jogadores</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Jogadores(a)</th>
                             <th scope="col">Batidas hoje</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $j->exibePartidas($mais); ?>
-                        <tr id="mais">
-                        </tr>
+                        <?php $j->batidasHoje(); ?>
                     </tbody>
                 </table>
             </div>

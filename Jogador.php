@@ -328,22 +328,28 @@
 
             global $conexaoDomino;
 
-            $sql = "SELECT id_jogador, nome, acumulo FROM jogador ORDER by acumulo DESC";
+            $sql = "SELECT id_jogador, nome FROM jogador";
             $sql = $conexaoDomino->prepare($sql);
             $sql->execute();
+
             while($retorna = $sql->fetch(PDO::FETCH_ASSOC)){
-                if($retorna['acumulo'] == ''){
+                $sqlData = "SELECT COUNT(bateu) FROM batida WHERE DATE(dataDupla) = CURDATE() and bateu = :id";
+                $sqlData = $conexaoDomino->prepare($sqlData);
+                $sqlData->bindValue(":id", $retorna['id_jogador']);
+                $sqlData->execute();
+                while($retorna1 = $sqlData->fetch(PDO::FETCH_ASSOC)){
+                    if($retorna1['COUNT(bateu)'] == 0){
         
-                }else{
-                    echo '
-                    <tr>
-                        <th scope="row">'.$retorna['id_jogador'].'</th>
-                        <td>'.$retorna['nome'].'</td>
-                        <td>'.$retorna['acumulo'].'</td>
-                    </tr>
-                    ';
+                    }else{
+                        echo '
+                            <tr>
+                                <th scope="row">'.$retorna['id_jogador'].'</th>
+                                <td>'.$retorna['nome'].'</td>
+                                <td>'.$retorna1['COUNT(bateu)'].'</td>
+                            </tr>
+                        ';
+                    }
                 }
-                
             }
         }
 
@@ -449,6 +455,24 @@
             }
         }
 
+
+        /*function batidasHoje(){
+            global $conexaoDomino;
+            $sql = 'SELECT COUNT(bateu)
+            FROM batida
+            WHERE bateu = :id and tipo = :t';
+            $sql = $conexaoDomino->prepare($sql);
+            $sql->bindValue(":id", $id);
+            $sql->bindValue(":t", $num);
+            $sql->execute();
+            while($mostraSql = $sql->fetch(PDO::FETCH_ASSOC)){
+                //echo ''.$mostraSql['tipo'].'nome: '.$nome;
+                echo 'Você bateu '.$mostraSql['COUNT(bateu)'].' '.$nome;
+                //echo ''.$mostraSql['bateu'];
+                echo '<br />';
+            }
+        }
+        SELECT * FROM batida WHERE DATE(dataDupla) = CURDATE();*/
 
         public function exibeNome($id){
 
