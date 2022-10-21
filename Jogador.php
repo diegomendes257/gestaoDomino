@@ -390,7 +390,7 @@
                 $data = date_create($partida['dataPartida']);
                 echo '
                     <tr>
-                        <th scope="row">'.$partida['id_partidas'].'</th>
+                        <th scope="row"><a href="exibePartida.php?id='.$partida['id_partidas'].'">'.$partida['id_partidas'].'</th>
                         <td>'.$partida['id_duplas_1'].'</td>
                         <td>'.$partida['id_duplas_2'].'</td>
                         <td>'.$partida['ponto_duplas_1'].'</td>
@@ -451,7 +451,83 @@
                         <td>'.$batida1.'</td>
                         <td>'.date_format($data, 'd/m/Y').' às '.date_format($data, 'H:i').'</td>
                     </tr>
-                    ';
+                ';
+            }
+        }
+
+
+        public function exibeBatidasId($id){
+
+            global $conexaoDomino;
+
+            $sql = "SELECT * FROM batida WHERE id_partidas_FK = :id ORDER BY id_batida ASC";
+            $sql = $conexaoDomino->prepare($sql);
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+
+            while($batidas = $sql->fetch(PDO::FETCH_ASSOC)){
+                $data = date_create($batidas['dataDupla']);
+                switch ($batidas['tipo']) {
+                    case "1":
+                        $batida1 = 'normal';
+                        break;
+                    case "2":
+                        $batida1 = 'carroça';
+                        break;
+                    case "3":
+                        $batida1 = 'lá e lô';
+                        break;
+                    case "4":
+                        $batida1 = 'cruzada';
+                        break;
+                    case "0":
+                        $batida1 = 'cont. pontos';
+                        break;
+                }
+
+                $sqlNome = "SELECT id_jogador, nome FROM jogador WHERE id_jogador = :id";
+                $sqlNome = $conexaoDomino->prepare($sqlNome);
+                $sqlNome->bindValue(":id", $batidas['bateu']);
+                $sqlNome->execute();
+                $imprimeNome = $sqlNome->fetch(PDO::FETCH_ASSOC);
+
+                echo '
+                    <tr>
+                        <th scope="row">'.$batidas['id_partidas_FK'].'</th>
+                        <td>'.$imprimeNome['nome'].'</td>
+                        <td>'.$batida1.'</td>
+                        <td>'.date_format($data, 'd/m/Y').' às '.date_format($data, 'H:i').'</td>
+                    </tr>
+                ';
+            }
+        }
+
+        function exibeJogadorDupla($id){
+
+            global $conexaoDomino;
+
+            $consultaPartidas = "SELECT jogador1, jogador2 FROM duplas WHERE id_dupla = :id";
+            $consultaPartidas = $conexaoDomino->prepare($consultaPartidas);
+            $consultaPartidas->bindValue(":id", $id);
+            $consultaPartidas->execute();
+            $partida1 = $consultaPartidas->fetch(PDO::FETCH_ASSOC);
+
+            $nome1 = $partida1['jogador1'];
+            $nome2 = $partida1['jogador2'];
+
+            global $conexaoDomino;
+            $sqlNome = "SELECT id_jogador, nome FROM jogador";
+            $sqlNome = $conexaoDomino->prepare($sqlNome);
+            //$sqlNome->bindValue(":id", $id);
+            $sqlNome->execute();
+            //$imprimeNome = $sqlNome->fetch(PDO::FETCH_ASSOC);
+        
+            while($imprimeNome = $sqlNome->fetch(PDO::FETCH_ASSOC)){
+                if($imprimeNome['id_jogador'] == $nome1){
+                    echo $imprimeNome['nome'].' <br/>';
+                }if($imprimeNome['id_jogador'] == $nome2){
+                    echo $imprimeNome['nome'];
+                }
             }
         }
 
