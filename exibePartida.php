@@ -145,7 +145,7 @@
                     <div class="row p-1">
                         <div class="col text-center bg-primary p-md-2">
                             <h3>
-                                <?php $j->exibeJogadorDupla($idDupla1) ?>
+                                <?php $j->exibeJogadorDupla($idDupla2) ?>
                             </h3> 
                         </div>
                         <div class="col-2 text-center p-md-2">
@@ -155,7 +155,7 @@
                         </div>
                         <div class="col text-center bg-success p-md-2">
                             <h3>
-                                <?php $j->exibeJogadorDupla($idDupla2) ?>
+                                <?php $j->exibeJogadorDupla($idDupla1) ?>
                             </h3>
                         </div>
                     </div>
