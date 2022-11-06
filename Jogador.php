@@ -515,7 +515,7 @@
             $nome1 = $partida1['jogador1'];
             $nome2 = $partida1['jogador2'];
 
-            global $conexaoDomino;
+            //global $conexaoDomino;
             $sqlNome = "SELECT id_jogador, nome FROM jogador";
             $sqlNome = $conexaoDomino->prepare($sqlNome);
             //$sqlNome->bindValue(":id", $id);

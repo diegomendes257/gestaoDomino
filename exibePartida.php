@@ -25,15 +25,15 @@
 
         $idDupla1 = $partida['id_duplas_1'];
         $idDupla2 = $partida['id_duplas_2'];
-        echo $partida['id_duplas_1'];
-        echo '<br />';
-        echo $partida['id_duplas_2'];
+        //echo $partida['id_duplas_1'];
+        //echo '<br />';
+        //echo $partida['id_duplas_2'];
 
         
 
 
         // SELECIONA TABELAS DUPLAS E JOGADOR 
-        $selecionaJogador1 = "SELECT jogador.nome, jogador.id_jogador, duplas.jogador1, 
+        /*$selecionaJogador1 = "SELECT jogador.nome, jogador.id_jogador, duplas.jogador1, 
                                     duplas.id_dupla
                                     FROM jogador, duplas 
                                     WHERE duplas.jogador1 = jogador.id_jogador
@@ -210,7 +210,9 @@
                     ?>
                 </div>
             </div>
-            <a href="consultaJogador.php">VOLTAR</a>   
+            <div class="align-items-center">
+                <button onclick="window.location.href='consultaJogador.php';" class="btn btn-sm w-50 m-2 btn-success p-3">VOLTAR</button>
+            </div>   
         </div>
     </body>
 </html>
